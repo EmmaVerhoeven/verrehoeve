@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>De Verre Hoeve</title>
+    <style>
+        body {
+            margin: 0;
+            color: black;
+            font-family: 'Times New Roman', Times, serif;
+            background: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            max-width: 500px;
+            margin: 0 auto -30px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        details {
+            max-width: 500px;
+            margin: 10px auto;
+
+            text-align: center;
+        }
+
+        details summary {
+            text-align: center;
+            cursor: pointer;
+            font-style: normal;
+
+        }
+
+        details [open] {}
+
+        /* SVG text styles */
+        .main-title {
+            fill: white;
+            font-size: 36px;
+
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .curve-text {
+            fill: white;
+            font-style: italic;
+            font-size: 14px;
+            text-anchor: middle;
+        }
+
+        .aanbod {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- Logo -->
+    <svg class="logo" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <path id="top-arc" d="M70,125 A130,55 0 0,1 330,125" fill="none" />
+            <path id="bottom-arc" d="M70,125 A130,55 0 0,0 330,125" fill="none" />
+        </defs>
+        <ellipse cx="200" cy="125" rx="150" ry="75" fill="tomato" />
+        <text class="curve-text">
+            <textPath href="#top-arc" startOffset="50%">regeneratieve catering</textPath>
+        </text>
+        <text class="main-title" x="200" y="125">Verre Hoeve</text>
+        <text class="curve-text">
+            <textPath href="#bottom-arc" startOffset="50%">future farm!</textPath>
+        </text>
+    </svg>
+
+    <!-- Centered title & text -->
+    <h1></h1>
+    <p>
+        wij zijn Renée, Isabelle en Emma Verhoeven, zussen met de grote droom om samen een regeneratieve
+        boerderij te
+        runnen waar onze passies en talenten voor gastronomie, sociale impact en creativiteit samenkomen...
+
+    </p>
+
+    <p class="aanbod">...tot dat lukt verzorgen
+        we regeneratieve diners
+        op locatie!
+    </p>
+
+    <p>zoek je lokale, seizoensgebonden en vegetarische catering op maat?</p>
+    <a href="mailto:reneesfarm.events@gmail.com"><button>stuur ons een mailtje</button></a>
+
+    <br>
+    <br>
+
+    <img src="3sisters.png" alt="" width="250px">
+
+
+
+    <!-- FAQ with toggles -->
+    <details>
+        <summary>heb je wat voorbeelden van jullie werk?</summary> <br>
+        <p> voor nu alleen <a href="https://www.instagram.com/verrehoeve" target="_blank">hier</a>, binnenkort op deze
+            site!
+
+
+        </p>
+    </details>
+
+    <details>
+        <summary>wat betekent regeneratief?</summary> <br>
+        <p>regeneratieve landbouw is een manier van boeren die de bodem, biodiversiteit en gemeenschap versterkt in
+            plaats van uitput.</p>
+    </details>
+
+
+</body>
+
+</html>
