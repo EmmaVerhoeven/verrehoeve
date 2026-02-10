@@ -21,6 +21,11 @@
             display: block;
         }
 
+
+        a:visited {
+            color: blue;
+        }
+
         h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
@@ -68,12 +73,33 @@
         .aanbod {
             font-size: 1.5em;
         }
+
+
+        .reserveer,
+        .reserveer a {
+            padding: 10px;
+            color: black;
+            font-size: 1em;
+            font-weight: bold;
+            background-color: yellow;
+            margin-bottom: 30px;
+
+        }
+
+        .events {
+            display: block;
+        }
+
+        .eventimg {
+            width: 30%;
+
+        }
     </style>
 </head>
 
 <body>
 
-
+    <img src="3sisters.png" alt="" width="250px">
     <!-- Logo -->
     <svg class="logo" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -95,16 +121,34 @@
     <p>
         wij zijn Renée, Isabelle en Emma Verhoeven, zussen met de grote droom om samen een regeneratieve
         boerderij te
-        runnen waar onze passies en talenten voor gastronomie, sociale impact en creativiteit samenkomen...
+        runnen waar onze passies en talenten voor gastronomie, sociale impact en kunst samenkomen...
 
     </p>
 
     <p class="aanbod">...tot dat lukt verzorgen
         we regeneratieve diners
-        op locatie!
+        op allerlei locaties!
     </p>
 
-    <p>zoek je lokale, seizoensgebonden en vegetarische catering op maat?</p>
+
+    <div class="events">
+        <p>volgende diner:</p>
+
+        <div clas="dinner">
+            <h2>6 maart bij <a href="https://extrapractice.space">Extra Practice</a> in Rotterdam</h2>
+
+            <img class="eventimg" src="/events/rd1.gif" alt="">
+            <img class="eventimg" src="/events/rd2.gif" alt="">
+
+            <br><br> <button class="reserveer"><a href="https://forms.gle/3oNkz6Zri4gVDaki9">Reserveren</a></button>
+        </div>
+
+
+
+    </div>
+
+
+    <p>zoek je lokale, seizoensgebonden en vegetarische catering op maat? of heb je zin om met ons samen te werken?</p>
     <a href="mailto:reneesfarm.events@gmail.com"><button>stuur ons een mailtje</button></a>
 
     <br>
