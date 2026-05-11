@@ -1,0 +1,421 @@
+```html
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>De Verre Hoeve</title>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            color: black;
+            background: white;
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* NAVIGATION */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            border-bottom: 1px solid black;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 8px 24px;
+        }
+
+        .logo-small {
+            width: 260px;
+
+            margin: 10px;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* GENERAL SECTIONS */
+
+        section {
+            padding: 120px 20px 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2 {
+            font-weight: normal;
+        }
+
+        p {
+            max-width: 700px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .main-logo {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 30px;
+        }
+
+        .aanbod {
+            font-size: 1.5rem;
+            margin-top: 40px;
+        }
+
+        /* SVG TEXT */
+
+        .main-title {
+            fill: white;
+            font-size: 36px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .curve-text {
+            fill: white;
+            font-style: italic;
+            font-size: 14px;
+            text-anchor: middle;
+        }
+
+        /* GALLERY */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery img {
+            width: 100%;
+            display: block;
+        }
+
+        /* AGENDA */
+
+        .agenda {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .event {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .event img {
+            width: 100%;
+        }
+
+        .event-date {
+            font-style: italic;
+        }
+
+        .event a {
+            color: blue;
+        }
+
+        /* CONTACT */
+
+        .contact-button {
+            display: inline-block;
+            padding: 12px 20px;
+            border: 1px solid black;
+            text-decoration: none;
+            color: black;
+            margin-top: 20px;
+        }
+
+        .contact-button:hover {
+            background: yellow;
+        }
+
+        /* DETAILS */
+
+        details {
+            max-width: 700px;
+            margin-top: 20px;
+        }
+
+        summary {
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .event {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding-top: 140px;
+            }
+
+            .aanbod {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header>
+
+        <!-- SMALL LOGO -->
+
+        <svg class="logo-small" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <path id="top-arc-small" d="M70,125 A130,55 0 0,1 330,125" fill="none" />
+                <path id="bottom-arc-small" d="M70,125 A130,55 0 0,0 330,125" fill="none" />
+            </defs>
+
+            <ellipse cx="200" cy="125" rx="150" ry="75" fill="tomato" />
+
+            <text class="curve-text">
+                <textPath href="#top-arc-small" startOffset="50%">
+                    regeneratieve catering
+                </textPath>
+            </text>
+
+            <text class="main-title" x="200" y="125">
+                Verre Hoeve
+            </text>
+
+            <text class="curve-text">
+                <textPath href="#bottom-arc-small" startOffset="50%">
+                    future farm!
+                </textPath>
+            </text>
+        </svg>
+
+        <!-- MENU -->
+
+        <nav>
+            <a href="#over-ons">over ons</a>
+            <a href="#fotos">foto's</a>
+            <a href="#agenda">agenda</a>
+            <a href="#contact">contact</a>
+        </nav>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <img src="3sisters.png" alt="" width="150px">
+
+        <!-- BIG LOGO -->
+
+
+
+        <p>
+            wij zijn Renée, Isabelle en Emma Verhoeven, zussen met de grote droom om samen een regeneratieve
+            boerderij te runnen waar onze passies voor gastronomie, sociale impact en kunst samenkomen...
+        </p>
+
+        <img class="hero-image" src="renisabemma.png" alt="">
+
+        <p class="aanbod">
+            ...tot dat lukt verzorgen we regeneratieve diners op allerlei locaties!
+        </p>
+
+    </section>
+
+    <!-- OVER ONS -->
+
+    <section id="over-ons">
+
+        <h2>over ons</h2>
+
+        <p>
+            De Verre Hoeve is een regeneratief cateringcollectief gebaseerd in Rotterdam.
+            We werken met lokale, seizoensgebonden ingrediënten en organiseren diners,
+            samenwerkingen en culturele evenementen.
+        </p>
+
+        <details>
+            <summary>wat betekent regeneratief?</summary>
+
+            <p>
+                regeneratieve landbouw is een manier van boeren die de bodem,
+                biodiversiteit en gemeenschap versterkt in plaats van uitput.
+            </p>
+        </details>
+
+        <details>
+            <summary>heb je voorbeelden van wat jullie koken?</summary>
+
+            <p>
+                voorlopig vooral op
+                <a href="https://www.instagram.com/verrehoeve" target="_blank">
+                    instagram
+                </a>
+                — binnenkort ook hier op de site!
+            </p>
+        </details>
+
+    </section>
+
+    <!-- FOTO'S -->
+
+    <section id="fotos">
+
+        <h2>foto's</h2>
+
+        <div class="gallery">
+
+            <img src="foto1.jpg" alt="">
+            <img src="foto2.jpg" alt="">
+            <img src="foto3.jpg" alt="">
+            <img src="foto4.jpg" alt="">
+            <img src="foto5.jpg" alt="">
+            <img src="foto6.jpg" alt="">
+
+        </div>
+
+    </section>
+
+    <!-- AGENDA -->
+
+    <section id="agenda">
+
+        <h2>agenda</h2>
+
+        <div class="agenda">
+
+            <div class="event">
+
+                <img src="event1.jpg" alt="">
+
+                <div>
+                    <p class="event-date">14 juni 2026</p>
+
+                    <h3>zomerdiner bij extra practice</h3>
+
+                    <p>
+                        een regeneratief diner met lokale groenten,
+                        muziek en lange tafels.
+                    </p>
+
+                    <a href="#">
+                        meer info / reserveren
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="event">
+
+                <img src="event2.jpg" alt="">
+
+                <div>
+                    <p class="event-date">5 juli 2026</p>
+
+                    <h3>oogstfeest</h3>
+
+                    <p>
+                        een middag en avond rondom oogst,
+                        koken en samen eten.
+                    </p>
+
+                    <a href="#">
+                        meer info
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h2>contact</h2>
+
+        <p>
+            zoek je lokale, seizoensgebonden en vegetarische catering op maat?
+            of heb je zin om met ons samen te werken?
+        </p>
+
+        <a class="contact-button" href="mailto:reneesfarm.events@gmail.com">
+            stuur ons een mailtje
+        </a>
+
+    </section>
+
+</body>
+
+</html>
+```

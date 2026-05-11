@@ -5,60 +5,70 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>De Verre Hoeve</title>
+
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            color: black;
             font-family: 'Times New Roman', Times, serif;
-            background: white;
-            text-align: center;
-            padding: 40px 20px;
+            color: black;
+            background-color: white;
+
         }
+
+        a {
+            color: rgb(10, 54, 185);
+        }
+
+
+
+
+        /* LAYOUT */
+
+        .layout {
+            display: flex;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 300px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-right: 1px solid black;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            padding: 30px 25px;
+        }
+
+        .sidebar-top {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        /* LOGO */
 
         .logo {
-            max-width: 500px;
-            margin: 0 auto -30px;
-            display: block;
+            width: 100%;
+            max-width: 240px;
         }
 
-
-        a:visited {
-            color: blue;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        p {
-            max-width: 600px;
-            margin: 0 auto 40px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        details {
-            max-width: 500px;
-            margin: 10px auto;
-
-            text-align: center;
-        }
-
-        details summary {
-            text-align: center;
-            cursor: pointer;
-            font-style: normal;
-
-        }
-
-        details [open] {}
-
-        /* SVG text styles */
         .main-title {
             fill: white;
             font-size: 36px;
-
             text-anchor: middle;
             dominant-baseline: middle;
         }
@@ -70,30 +80,238 @@
             text-anchor: middle;
         }
 
-        .aanbod {
-            font-size: 1.5em;
+        /* MENU */
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
         }
 
-
-        .reserveer,
-        .reserveer a {
-            padding: 10px;
+        nav a {
+            text-decoration: none;
             color: black;
-            font-size: 1em;
-            font-weight: bold;
-            background-color: yellow;
+            font-size: 1.7rem;
+            text-align: center;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* SIDEBAR IMAGE */
+
+        .sisters {
+            width: 100%;
+            max-width: 220px;
+            align-self: center;
+            margin-top: 80px;
+        }
+
+
+        /* CONTENT */
+
+        .content {
+            margin-left: 300px;
+            width: calc(100% - 300px);
+        }
+
+        section {
+            min-height: 70vh;
+            padding: 80px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 2.2rem;
             margin-bottom: 30px;
+        }
+
+        p {
+            max-width: 700px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .caption {
+
+            font-style: italic;
+            font-size: 0.8em;
+            margin-top: 4px;
 
         }
 
-        .events {
+        /* HERO */
+
+        .intro {
+            font-size: 1.4rem;
+            max-width: 750px;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 550px;
+            margin-top: 40px;
+        }
+
+        .aanbod {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            max-width: 700px;
+        }
+
+        /* GALLERY */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
             display: block;
         }
 
-        .eventimg {
-            min-width: 250px;
-            max-width: 20%;
+        /* AGENDA */
 
+        .agenda {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .event {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .event img {
+            width: 100%;
+        }
+
+        .event-date {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .past-event {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            align-items: start;
+            color: rgb(145, 140, 130);
+
+        }
+
+        .past-event a {
+            color: rgb(91, 91, 91);
+        }
+
+        .past-event img {
+            width: 100%;
+            opacity: 50%;
+        }
+
+        .past-event:hover img {
+            width: 100%;
+            opacity: 100%;
+        }
+
+        /* BUTTON */
+
+        .contact-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+
+            border: 1px solid black;
+            max-width: fit-content;
+            text-decoration: none;
+            color: black;
+        }
+
+        .contact-button:hover {
+            background: yellow;
+        }
+
+
+
+
+        /* DETAILS */
+
+        details {
+            margin-top: 20px;
+            max-width: 700px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+
+                border-right: none;
+                border-bottom: 1px solid black;
+
+                align-items: center;
+                text-align: center;
+            }
+
+            .sidebar-top {
+                align-items: center;
+            }
+
+            nav {
+                align-items: center;
+            }
+
+            .content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            section {
+                min-height: auto;
+                padding: 80px 30px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .event {
+                grid-template-columns: 1fr;
+            }
+
+            .intro,
+            .aanbod,
+            p {
+                font-size: 1.1rem;
+            }
 
         }
     </style>
@@ -101,81 +319,340 @@
 
 <body>
 
-    <img src="3sisters.png" alt="" width="150px">
-    <!-- Logo -->
-    <svg class="logo" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <path id="top-arc" d="M70,125 A130,55 0 0,1 330,125" fill="none" />
-            <path id="bottom-arc" d="M70,125 A130,55 0 0,0 330,125" fill="none" />
-        </defs>
-        <ellipse cx="200" cy="125" rx="150" ry="75" fill="tomato" />
-        <text class="curve-text">
-            <textPath href="#top-arc" startOffset="50%">regeneratieve catering</textPath>
-        </text>
-        <text class="main-title" x="200" y="125">Verre Hoeve</text>
-        <text class="curve-text">
-            <textPath href="#bottom-arc" startOffset="50%">future farm!</textPath>
-        </text>
-    </svg>
+    <div class="layout">
 
-    <!-- Centered title & text -->
-    <h1></h1>
-    <p>
-        wij zijn Renée, Isabelle en Emma Verhoeven, zussen met de grote droom om samen een regeneratieve
-        boerderij te
-        runnen waar onze passies voor gastronomie, sociale impact en kunst samenkomen...
+        <!-- SIDEBAR -->
 
-    </p>
+        <aside class="sidebar">
 
-    <p class="aanbod">...tot dat lukt verzorgen
-        we regeneratieve diners
-        op allerlei locaties!
-    </p>
+            <div class="sidebar-top">
+
+                <!-- SVG LOGO -->
+
+                <svg class="logo" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+
+                    <defs>
+                        <path id="top-arc" d="M70,125 A130,55 0 0,1 330,125" fill="none" />
+                        <path id="bottom-arc" d="M70,125 A130,55 0 0,0 330,125" fill="none" />
+                    </defs>
+
+                    <ellipse cx="200" cy="125" rx="150" ry="75" fill="tomato" />
+
+                    <text class="curve-text">
+                        <textPath href="#top-arc" startOffset="50%">
+                            regeneratieve catering
+                        </textPath>
+                    </text>
+
+                    <text class="main-title" x="200" y="125">
+                        Verre Hoeve
+                    </text>
+
+                    <text class="curve-text">
+                        <textPath href="#bottom-arc" startOffset="50%">
+                            future farm!
+                        </textPath>
+                    </text>
+
+                </svg>
+
+                <!-- MENU -->
+
+                <nav>
+                    <a href="#over-ons">over</a>
+                    <a href="#agenda">agenda</a>
+                    <a href="#fotos">foto's</a>
+
+                    <a href="#contact">contact</a>
+                </nav>
+
+            </div>
+
+            <!-- SISTERS -->
+
+            <img class="sisters" src="3sisters.png" alt=""
+                title="De ‘3 sisters’-methode is een oude landbouwmethode waarbij maïs, bonen en pompoen elkaar helpen groeien: de maïs geeft steun, de bonen voeden de bodem en de pompoen houdt de grond bedekt en vochtig.">
+
+        </aside>
+
+        <!-- CONTENT -->
+
+        <main class="content">
 
 
-    <div class="events">
-        <p>volgende diner:</p>
 
-        <div clas="dinner">
-            <h2>6 maart bij <a href="https://extrapractice.space">Extra Practice</a> in Rotterdam</h2>
+            <!-- OVER ONS -->
 
-            <img class="eventimg" src="RD1.gif" alt="">
-            <img class="eventimg" src="RD2.gif" alt="">
+            <section id="over-ons">
 
-            <br><br> <button class="reserveer"><a href="https://forms.gle/3oNkz6Zri4gVDaki9">Reserveren</a></button>
-        </div>
+                <h2>de Verre Hoeve</h2>
+
+                <p class="intro">
+                    wij zijn Renée, Isabelle en Emma Verhoeven,
+                    zussen met de droom om ooit samen een regeneratieve
+                    boerderij te runnen waar onze passies voor goed eten,
+                    sociale impact en kunst samen kunnen komen...
+                </p>
+
+                <img class="hero-image" src="renisabemma.png" alt="">
+                <span class="caption">Isabelle+bonen, Renée+pompoen,
+                    Emma+maïs</span>
+
+                <p class="aanbod">
+                    ...tot dat lukt verzorgen we regeneratieve diners
+                    op allerlei locaties!
+                </p>
+                <details>
+                    <summary>wat betekent regeneratief?</summary>
+
+                    <p>
+                        daarmee bedoelen we herstellend of vernieuwend: <a
+                            href="https://www.wur.nl/nl/onderzoek/plant/regeneratieve-landbouw">regeneratieve
+                            landbouw</a> is een manier van boeren
+                        die de bodem, biodiversiteit en gemeenschap herstelt en versterkt
+                        in plaats van uitput!
+                    </p>
+                </details>
+
+            </section>
 
 
+
+
+            <!-- AGENDA -->
+
+            <section id="agenda">
+
+                <h2>agenda</h2>
+
+                <div class="agenda">
+
+                    <div class="event">
+
+                        <a href="https://pluckvanhetveld.nl/pluck-van-het-velddiner/"><img src="pluck2.png" alt=""></a>
+
+                        <div>
+
+                            <p class="event-date">
+                                2, 3 & 4 oktober 2026
+                            </p>
+
+                            <h3>
+                                Pluck van het Velddiner
+                            </h3>
+                            <h4><a href="https://pluckvanhetveld.nl">Pluck van het Veld</a>, Cromvoirt</h4>
+
+                            <p>
+                                een unieke ervaring midden in de tuinderij incl rondleiding, welkomstdrankje, amuse, 4
+                                gangen, wijn- of alcoholvrij arrangement & koffie of thee.
+                            </p>
+
+                            <a href="https://pluckvanhetveld.nl/product/pluck-van-het-velddiner/">
+                                meer info / reserveren
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="event">
+
+                        <a href="https://forms.gle/heCHfiaG1Ld7DvqY8"><img src="stadsboerin.png" alt=""></a>
+
+                        <div>
+
+                            <p class="event-date">
+                                14 juni 2026
+                            </p>
+
+                            <h3>
+                                LUNCH bij de Stadsboerin
+                            </h3>
+                            <h4><a href="https://stadsboerinrotterdam.nl">de Stadsboerin</a>, Rotterdam</h4>
+
+                            <p>
+                                een driegangenlunch bij tuinderij de Stadsboerin in Rotterdam, met groenten,
+                                kruiden en wildpluk uit de tuin.
+                            </p>
+
+                            <a href="https://forms.gle/heCHfiaG1Ld7DvqY8">
+                                meer info / reserveren
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+                    _______________________________
+
+                    <div class="past-event">
+
+                        <img src="RD2.gif" alt="">
+
+                        <div>
+
+                            <p class="event-date">
+                                6 maart 2026
+                            </p>
+
+                            <h3>
+                                Fermentation Celebration
+                            </h3>
+                            <h4><a href="extrapractice.space">Extra Practice</a>, Rotterdam</h4>
+
+                            <p>
+                                regenerative dinner, celebrating the slow ferment, the brewing phase, the process...
+                            </p>
+
+                            <a href="https://forms.gle/3oNkz6Zri4gVDaki9">
+                                meer info/reserveren
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="past-event">
+
+                        <img src="pluck1.png" alt="">
+
+                        <div>
+
+                            <p class="event-date">
+                                3 & 4 oktober 2025
+                            </p>
+
+                            <h3>
+                                Pluck van het Velddiner
+                            </h3>
+
+                            <h4><a href="https://pluckvanhetveld.nl">Pluck van het Veld</a>, Cromvoirt</h4>
+
+                            <p>
+                                4 gangendiner in de kas met producten uit de tuinderij!
+                            </p>
+
+                            <a href="https://pluckvanhetveld.nl/pluck-van-het-velddiner/">
+                                meer info
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="past-event">
+
+                        <img src="ervekiek.png" alt="">
+
+                        <div>
+
+                            <p class="event-date">
+                                6 september 2025
+                            </p>
+
+                            <h3>
+                                Velddiner bij Erve Kiekebos
+                            </h3>
+
+                            <h4><a href="https://ervekiekebos.nl/agenda/">Erve Kiekebos</a>, Empe</h4>
+
+                            <p>
+                                regenerative dinner, celebrating the slow ferment, the brewing phase, the process...
+                            </p>
+
+                            <a href="https://forms.gle/3oNkz6Zri4gVDaki9">
+                                meer info/reserveren
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="past-event">
+
+                        <img src="3sisdinner.png" alt="">
+
+                        <div>
+
+                            <p class="event-date">
+                                9 februari 2025
+                            </p>
+
+                            <h3>
+                                Regenerative Dinner: 3 sisters edition
+                            </h3>
+                            <h4><a href="https://restaurantrotonde.nl">Restaurant Rotonde</a>, Rotterdam</h4>
+
+                            <p>
+                                regenerative dinner inspired by the Three Sisters farming method, sharing our process of
+                                dreaming and learning about starting a farm together...
+                            </p>
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+
+            </section>
+
+            <!-- FOTO'S -->
+
+            <section id="fotos">
+
+                <h2>foto's</h2>
+
+                <div class="gallery">
+
+                    <img src="foto1.png" alt="">
+                    <img src="foto2.png" alt="">
+                    <img src="foto3.png" alt="">
+                    <img src="foto4.png" alt="">
+                    <img src="foto5.png" alt="">
+                    <img src="foto6.png" alt="">
+
+                </div>
+
+            </section>
+
+
+
+            <!-- CONTACT -->
+
+            <section id="contact">
+
+                <h2>contact</h2>
+
+                <p>
+                    zoek je lokale, seizoensgebonden en vegetarische catering op maat?
+                    of heb je zin om met ons samen te werken?
+                </p>
+
+                <a class="contact-button" href="mailto:reneesfarm.events@gmail.com">
+                    stuur ons een mailtje
+                </a>
+
+            </section>
+
+        </main>
 
     </div>
-
-
-    <p>zoek je lokale, seizoensgebonden en vegetarische catering op maat? of heb je zin om met ons samen te werken?</p>
-    <a href="mailto:reneesfarm.events@gmail.com"><button>stuur ons een mailtje</button></a>
-
-    <br>
-    <br>
-
-    <img src="3sisters.png" alt="" width="250px">
-
-
-
-    <!-- FAQ with toggles -->
-    <details>
-        <summary>heb je wat voorbeelden van wat jullie zoal koken?</summary> <br>
-        <p> voor nu alleen <a href="https://www.instagram.com/verrehoeve" target="_blank">hier</a>, binnenkort op deze
-            site!
-
-
-        </p>
-    </details>
-
-    <details>
-        <summary>wat betekent regeneratief?</summary> <br>
-        <p>regeneratieve landbouw is een manier van boeren die de bodem, biodiversiteit en gemeenschap versterkt in
-            plaats van uitput.</p>
-    </details>
-
 
 </body>
 
