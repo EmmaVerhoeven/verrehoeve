@@ -272,22 +272,47 @@
             .sidebar {
                 position: relative;
                 width: 100%;
-                height: auto;
+                height: 50%;
 
                 border-right: none;
                 border-bottom: 1px solid black;
 
-                align-items: center;
-                text-align: center;
+                align-items: left;
+                text-align: left;
+
             }
 
             .sidebar-top {
-                align-items: center;
+                align-items: left;
             }
 
             nav {
-                align-items: center;
+                align-items: left;
+                gap: 15px;
+
             }
+
+            nav a {
+                text-decoration: underline;
+                color: black;
+                font-size: 1.3rem;
+                text-align: left;
+            }
+
+            .logo {
+
+                position: absolute;
+                top: 10px;
+                right: 20px;
+            }
+
+
+            .sisters {
+                display: none;
+
+            }
+
+
 
             .content {
                 margin-left: 0;
@@ -304,7 +329,13 @@
             }
 
             .event {
-                grid-template-columns: 1fr;
+
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .past-event {
+
+                grid-template-columns: 1fr 1fr;
             }
 
             .intro,
