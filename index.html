@@ -39,7 +39,7 @@
         /* SIDEBAR */
 
         .sidebar {
-            width: 300px;
+            width: 350px;
             height: 100vh;
             position: fixed;
             top: 0;
@@ -63,7 +63,8 @@
 
         .logo {
             width: 100%;
-            max-width: 240px;
+            max-width: 300px;
+            align-self: center;
         }
 
         .main-title {
@@ -112,7 +113,7 @@
         /* CONTENT */
 
         .content {
-            margin-left: 300px;
+            margin-left: 350px;
             width: calc(100% - 300px);
         }
 
@@ -261,6 +262,14 @@
             font-size: 1.1rem;
         }
 
+
+        .past-events-toggle {
+
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: rgb(125, 125, 125);
+        }
+
         /* MOBILE */
 
         @media (max-width: 900px) {
@@ -361,36 +370,36 @@
                 <!-- SVG LOGO -->
 
                 <svg class="logo" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+                    <a href="#over-ons">
+                        <defs>
+                            <path id="top-arc" d="M70,125 A130,55 0 0,1 330,125" fill="none" />
+                            <path id="bottom-arc" d="M70,125 A130,55 0 0,0 330,125" fill="none" />
+                        </defs>
 
-                    <defs>
-                        <path id="top-arc" d="M70,125 A130,55 0 0,1 330,125" fill="none" />
-                        <path id="bottom-arc" d="M70,125 A130,55 0 0,0 330,125" fill="none" />
-                    </defs>
+                        <ellipse cx="200" cy="125" rx="150" ry="75" fill="tomato" />
 
-                    <ellipse cx="200" cy="125" rx="150" ry="75" fill="tomato" />
+                        <text class="curve-text">
+                            <textPath href="#top-arc" startOffset="50%">
+                                regeneratieve catering
+                            </textPath>
+                        </text>
 
-                    <text class="curve-text">
-                        <textPath href="#top-arc" startOffset="50%">
-                            regeneratieve catering
-                        </textPath>
-                    </text>
+                        <text class="main-title" x="200" y="125">
+                            Verre Hoeve
+                        </text>
 
-                    <text class="main-title" x="200" y="125">
-                        Verre Hoeve
-                    </text>
-
-                    <text class="curve-text">
-                        <textPath href="#bottom-arc" startOffset="50%">
-                            future farm!
-                        </textPath>
-                    </text>
-
+                        <text class="curve-text">
+                            <textPath href="#bottom-arc" startOffset="50%">
+                                future farm!
+                            </textPath>
+                        </text>
+                    </a>
                 </svg>
 
                 <!-- MENU -->
 
                 <nav>
-                    <a href="#over-ons">over</a>
+
                     <a href="#agenda">agenda</a>
                     <a href="#fotos">foto's</a>
 
@@ -521,125 +530,134 @@
 
 
 
+                    <details>
+                        <summary class="past-events-toggle">
+                            eerdere events
+                        </summary>
 
+                        <br>
+                        <div class="past-event">
 
-                    _______________________________
+                            <img src="RD2.png" alt="">
 
-                    <div class="past-event">
+                            <div>
 
-                        <img src="RD2.png" alt="">
+                                <p class="event-date">
+                                    6 maart 2026
+                                </p>
 
-                        <div>
+                                <h3>
+                                    Fermentation Celebration
+                                </h3>
+                                <h4><a href="extrapractice.space">Extra Practice</a>, Rotterdam</h4>
 
-                            <p class="event-date">
-                                6 maart 2026
-                            </p>
+                                <p>
+                                    regenerative dinner, celebrating the slow ferment, the brewing phase, the process...
+                                </p>
 
-                            <h3>
-                                Fermentation Celebration
-                            </h3>
-                            <h4><a href="extrapractice.space">Extra Practice</a>, Rotterdam</h4>
+                                <a href="https://forms.gle/3oNkz6Zri4gVDaki9">
+                                    meer info/reserveren
+                                </a>
 
-                            <p>
-                                regenerative dinner, celebrating the slow ferment, the brewing phase, the process...
-                            </p>
-
-                            <a href="https://forms.gle/3oNkz6Zri4gVDaki9">
-                                meer info/reserveren
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="past-event">
-
-                        <img src="pluck1.png" alt="">
-
-                        <div>
-
-                            <p class="event-date">
-                                3 & 4 oktober 2025
-                            </p>
-
-                            <h3>
-                                Pluck van het Velddiner
-                            </h3>
-
-                            <h4><a href="https://pluckvanhetveld.nl">Pluck van het Veld</a>, Cromvoirt</h4>
-
-                            <p>
-                                4 gangendiner in de kas met producten uit de tuinderij!
-                            </p>
-
-                            <a href="https://pluckvanhetveld.nl/pluck-van-het-velddiner/">
-                                meer info
-                            </a>
+                            </div>
 
                         </div>
 
-                    </div>
+                        <br>
+                        <div class="past-event">
 
+                            <img src="pluck1.png" alt="">
 
-                    <div class="past-event">
+                            <div>
 
-                        <img src="ervekiek.png" alt="">
+                                <p class="event-date">
+                                    3 & 4 oktober 2025
+                                </p>
 
-                        <div>
+                                <h3>
+                                    Pluck van het Velddiner
+                                </h3>
 
-                            <p class="event-date">
-                                6 september 2025
-                            </p>
+                                <h4><a href="https://pluckvanhetveld.nl">Pluck van het Veld</a>, Cromvoirt</h4>
 
-                            <h3>
-                                Velddiner bij Erve Kiekebos
-                            </h3>
+                                <p>
+                                    4 gangendiner in de kas met producten uit de tuinderij!
+                                </p>
 
-                            <h4><a href="https://ervekiekebos.nl/agenda/">Erve Kiekebos</a>, Empe</h4>
+                                <a href="https://pluckvanhetveld.nl/pluck-van-het-velddiner/">
+                                    meer info
+                                </a>
 
-                            <p>
-                                regenerative dinner, celebrating the slow ferment, the brewing phase, the process...
-                            </p>
-
-                            <a href="https://forms.gle/3oNkz6Zri4gVDaki9">
-                                meer info/reserveren
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                    <div class="past-event">
-
-                        <img src="3sisdinner.png" alt="">
-
-                        <div>
-
-                            <p class="event-date">
-                                9 februari 2025
-                            </p>
-
-                            <h3>
-                                Regenerative Dinner: 3 sisters edition
-                            </h3>
-                            <h4><a href="https://restaurantrotonde.nl">Restaurant Rotonde</a>, Rotterdam</h4>
-
-                            <p>
-                                regenerative dinner inspired by the Three Sisters farming method, sharing our process of
-                                dreaming and learning about starting a farm together...
-                            </p>
-
-
+                            </div>
 
                         </div>
 
-                    </div>
+                        <br>
+                        <div class="past-event">
+
+                            <img src="ervekiek.png" alt="">
+
+                            <div>
+
+                                <p class="event-date">
+                                    6 september 2025
+                                </p>
+
+                                <h3>
+                                    Velddiner bij Erve Kiekebos
+                                </h3>
+
+                                <h4><a href="https://ervekiekebos.nl/agenda/">Erve Kiekebos</a>, Empe</h4>
+
+                                <p>
+                                    regenerative dinner, celebrating the slow ferment, the brewing phase, the process...
+                                </p>
+
+                                <a href="https://forms.gle/3oNkz6Zri4gVDaki9">
+                                    meer info/reserveren
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                        <br>
+                        <div class="past-event">
+
+                            <img src="3sisdinner.png" alt="">
+
+                            <div>
+
+                                <p class="event-date">
+                                    9 februari 2025
+                                </p>
+
+                                <h3>
+                                    Regenerative Dinner: 3 sisters edition
+                                </h3>
+                                <h4><a href="https://restaurantrotonde.nl">Restaurant Rotonde</a>, Rotterdam</h4>
+
+                                <p>
+                                    regenerative dinner inspired by the Three Sisters farming method, sharing our
+                                    process of
+                                    dreaming and learning about starting a farm together...
+                                </p>
+
+
+
+                            </div>
+
+                        </div>
 
 
 
 
                 </div>
+                </details>
+
+
+
+
 
             </section>
 
