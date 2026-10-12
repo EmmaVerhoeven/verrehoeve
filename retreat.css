@@ -13,23 +13,29 @@
 :root {
   color-scheme: dark;
 
-  --bg: #211a17; /* diepe grond, ook de achtergrond van de pagina */
-  --bg-2: #2a211c; /* iets lichter vlak */
-  --bg-boek: #15100e; /* boeken-sectie */
+  --schuin: normal; /* koppen en zinnetjes: normal = recht, italic = weer schuin */
+
+  --bg: #28241c; /* diepe grond, ook de achtergrond van de pagina */
+  --bg-2: #2f2a20; /* iets lichter vlak */
+  --bg-boek: #1d1a14; /* boeken-sectie */
+
+  /* spikkels in de aarde: een klein tegeltje met donkere korreltjes, dat zich herhaalt */
+  --spikkel-aarde: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' shape-rendering='crispEdges'%3E%3Cpath fill='%23000' fill-opacity='.3' d='M8 14h2v2h-2z M41 6h1v1h-1z M73 22h2v2h-2z M104 9h1v1h-1z M26 43h1v1h-1z M58 51h2v2h-2z M92 47h1v1h-1z M113 68h2v2h-2z M12 77h2v2h-2z M47 86h1v1h-1z M79 81h1v1h-1z M33 108h2v2h-2z M66 113h1v1h-1z M99 102h2v2h-2z M19 30h1v1h-1z M87 64h1v1h-1z'/%3E%3Cpath fill='%23000' fill-opacity='.3' d='M22 9h2v2h-2z M57 17h1v1h-1z M90 28h2v2h-2z M5 49h1v1h-1z M38 62h2v2h-2z M71 38h1v1h-1z M109 41h1v1h-1z M27 91h1v1h-1z M61 72h2v2h-2z M95 84h1v1h-1z M7 104h2v2h-2z M50 101h1v1h-1z M83 111h2v2h-2z M115 96h1v1h-1z M45 30h1v1h-1z M14 60h1v1h-1z'/%3E%3C/svg%3E");
+  --spikkel: var(--spikkel-aarde); /* in de winter is de hele pagina aarde */
 
   --tekst: #f0e8da;
   --tekst-mid: #d3c8b8;
   --tekst-zacht: #b3a595;
-  --lijn: #43372f;
-  --lijn-sterk: #6b5a4c;
-  --accent: #e8a35a; /* warm kaarslicht */
+  --lijn: #f6e2b5;
+  --lijn-sterk: #f6e2b5;
+  --accent: #cf5b37; /* warm kaarslicht */
 
   --hero-tekst: #f3ecde;
   --hero-label: #c9bfae;
   --hero-zin: #b9ab9a;
   --knop-hover: #1b2233;
 
-  --licht: #f5ebc8; /* de maan */
+  --licht: #f6e2b5; /* de maan */
   --licht-glow: rgba(245, 235, 200, 0.28);
 
   --widget-bg: #f7f4ec; /* het boekingsvak blijft licht, embeds zijn meestal wit */
@@ -41,14 +47,15 @@
 
   --bg: #f7f4ec;
   --bg-2: #ebe4d3;
-  --bg-boek: #2e2019;
+  --bg-boek: #3b3428;
+  --spikkel: none; /* in de lente alleen spikkels waar echt aarde is */
 
   --tekst: #2a2420;
   --tekst-mid: #4a3f37;
   --tekst-zacht: #7a6c60;
   --lijn: #d9cfbd;
   --lijn-sterk: #8a6a52;
-  --accent: #d9622b; /* radijs, pompoen */
+  --accent: #ff3b0f; /* radijs, pompoen */
 
   --hero-tekst: #2a2420;
   --hero-label: #56616a;
@@ -71,7 +78,7 @@ body {
   margin: 0;
   font-family: "Times New Roman", Times, serif;
   color: var(--tekst);
-  background: var(--bg);
+  background: var(--spikkel), var(--bg);
   font-size: 1.15rem;
   line-height: 1.65;
   overflow-x: hidden;
@@ -138,7 +145,7 @@ h3 {
 }
 
 .balk .thuis {
-  font-style: italic;
+  font-style: var(--schuin);
   font-size: 1.2rem;
 }
 
@@ -237,7 +244,7 @@ h3 {
 }
 
 .laag.winter {
-  background: linear-gradient(to bottom, #1a2c38 0%, #273e51 45%, #d15314 100%);
+  background: linear-gradient(to bottom, #101b31 0%, #273e51 45%, #3e5776 100%);
 }
 
 .laag.lente {
@@ -279,6 +286,20 @@ h3 {
   inset: 0;
 }
 
+/* de spikkels liggen als een eigen laagje over de aarde */
+.bodem .vlak::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--spikkel-aarde);
+}
+
+/* in de lente loopt de aarde uit naar papier, dus de spikkels vervagen mee */
+.lente .bodem .vlak::after {
+  -webkit-mask-image: linear-gradient(to bottom, #000 25%, transparent 70%);
+  mask-image: linear-gradient(to bottom, #000 25%, transparent 70%);
+}
+
 .bodem .rand {
   position: absolute;
   left: 0;
@@ -293,15 +314,15 @@ h3 {
 }
 
 .winter .bodem .vlak {
-  background: linear-gradient(to bottom, #3d2c24 0%, #2d221c 45%, #211a17 100%);
+  background: linear-gradient(to bottom, #40392c 0%, #342e24 45%, #28241c 100%);
 }
 
 .winter .rand .voor {
-  fill: #3d2c24;
+  fill: #40392c;
 }
 
 .winter .rand .achter {
-  fill: #3d2c24;
+  fill: #40392c;
   opacity: 0.55;
 }
 
@@ -328,7 +349,7 @@ h3 {
   opacity: 0.55;
 }
 
-/* sterretjes (winter) en stuifmeel (lente), vervagen naar de aarde toe */
+/* sterretjes en sneeuw (winter) en stuifmeel (lente), vervagen naar de aarde toe */
 .deeltjes {
   position: absolute;
   inset: 0;
@@ -345,10 +366,17 @@ h3 {
 }
 
 .sterren,
+.sneeuw,
 .stuifmeel {
   position: absolute;
   inset: 0;
   transition: opacity 1s;
+}
+
+/* de sterren staan alleen bovenin de hemel en dunnen naar beneden toe uit */
+.sterren {
+  -webkit-mask-image: linear-gradient(to bottom, #000 12%, transparent 38%);
+  mask-image: linear-gradient(to bottom, #000 12%, transparent 38%);
 }
 
 /* elke ster is een eigen stipje met een eigen formaat, snelheid en moment:
@@ -358,8 +386,8 @@ h3 {
   width: var(--g);
   height: var(--g);
   border-radius: 50%;
-  background: #ffdca0;
-  box-shadow: 0 0 calc(var(--g) * 2.5) rgba(255, 220, 160, 0.55);
+  background: #ffcf5c;
+  box-shadow: 0 0 calc(var(--g) * 2.5) rgba(255, 200, 80, 0.6);
   opacity: var(--o);
 }
 
@@ -377,6 +405,42 @@ h3 {
     opacity: 1;
     transform: scale(1.2);
   }
+}
+
+/* sneeuw: zachte vlokjes die langzaam omlaag dwarrelen. twee laagjes, dichtbij
+   (groter, sneller) en ver weg (kleiner, trager), die samen licht heen en weer wiegen */
+.sneeuw {
+  inset: 0 -20px;
+  opacity: 0.55;
+  animation: wiegen 9s ease-in-out infinite alternate;
+}
+
+.sneeuw::before,
+.sneeuw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.sneeuw::before {
+  top: -450px;
+  background-image:
+    radial-gradient(3px 3px at 90px 45px, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(3.4px 3.4px at 195px 285px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(2.8px 2.8px at 405px 405px, rgba(255, 255, 255, 0.85), transparent);
+  background-size: 450px 450px;
+  animation: omlaag 39s linear infinite;
+}
+
+.sneeuw::after {
+  top: -330px;
+  background-image:
+    radial-gradient(1.8px 1.8px at 45px 120px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1.6px 1.6px at 290px 195px, rgba(255, 255, 255, 0.5), transparent);
+  background-size: 330px 330px;
+  animation: omlaag-ver 51s linear infinite;
 }
 
 /* stuifmeel: zachte stipjes die langzaam omhoog zweven, de lente komt eraan */
@@ -413,7 +477,8 @@ h3 {
   animation: omhoog 45s linear infinite;
 }
 
-:root[data-thema="lente"] .sterren {
+:root[data-thema="lente"] .sterren,
+:root[data-thema="lente"] .sneeuw {
   opacity: 0;
 }
 
@@ -430,8 +495,38 @@ h3 {
   }
 }
 
+@keyframes omlaag {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(450px);
+  }
+}
+
+@keyframes omlaag-ver {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(330px);
+  }
+}
+
+@keyframes wiegen {
+  from {
+    transform: translateX(-10px);
+  }
+  to {
+    transform: translateX(10px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sterren i.fonkel,
+  .sneeuw,
+  .sneeuw::before,
+  .sneeuw::after,
   .stuifmeel {
     animation: none;
   }
@@ -471,7 +566,7 @@ h3 {
 
 .hero h1 {
   font-size: clamp(3rem, 9vw, 6.5rem);
-  font-style: italic;
+  font-style: italic; /* de titel blijft altijd schuin */
   line-height: 1;
   margin: 12px 0 18px;
 }
@@ -569,7 +664,7 @@ h3 {
   z-index: 2;
   margin: 50px 24px 0;
   padding-bottom: var(--zin-ruimte);
-  font-style: italic;
+  font-style: var(--schuin);
   font-size: 1.3rem;
   color: var(--hero-zin);
   transition: color 0.8s;
@@ -607,7 +702,7 @@ section.hero {
 
 section h2 {
   font-size: clamp(2.2rem, 5vw, 3rem);
-  font-style: italic;
+  font-style: var(--schuin);
   text-align: center;
   margin: 6px 0 50px;
 }
@@ -637,12 +732,13 @@ section > .label {
   list-style: none;
   padding: 0;
   margin: 0 auto;
-  max-width: 760px;
+  max-width: 860px;
 }
 
+/* kop | tekst, met de plaatjes eronder over de hele breedte van de lijn */
 .onderdelen li {
   display: grid;
-  grid-template-columns: 230px 1fr;
+  grid-template-columns: 200px 1fr;
   gap: 6px 40px;
   align-items: baseline;
   padding: 32px 0;
@@ -655,7 +751,7 @@ section > .label {
 
 .onderdelen h3 {
   font-size: 1.7rem;
-  font-style: italic;
+  font-style: var(--schuin);
   margin: 0;
   line-height: 1.2;
 }
@@ -665,10 +761,27 @@ section > .label {
   color: var(--tekst-mid);
 }
 
+.plaatjes {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* --r is de verhouding van de foto (breedte / hoogte): zo worden ze allemaal
+   even hoog zonder dat er iets wordt afgesneden */
+.plaatjes img {
+  flex: var(--r, 1) 1 0;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: var(--r, 1);
+  background: var(--bg-2);
+}
+
 /* programma */
 
 #programma {
-  background: var(--bg-2);
+  background: var(--spikkel), var(--bg-2);
 }
 
 .dagen {
@@ -681,7 +794,7 @@ section > .label {
 
 .dagen h3 {
   font-size: 1.6rem;
-  font-style: italic;
+  font-style: var(--schuin);
   margin: 0 0 14px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--lijn-sterk);
@@ -706,7 +819,7 @@ section > .label {
 
 .voetnoot {
   text-align: center;
-  font-style: italic;
+  font-style: var(--schuin);
   color: var(--tekst-zacht);
   margin: 50px 0 0;
 }
@@ -717,7 +830,8 @@ section > .label {
   margin: 0 0 1em;
 }
 
-/* elke foto houdt z'n eigen verhouding (--r = breedte / hoogte), samen vullen ze één rij van gelijke hoogte */
+/* de foto's zijn even breed en houden hun eigen verhouding: er wordt niets
+   afgesneden */
 .fotos {
   display: flex;
   align-items: flex-start;
@@ -727,7 +841,7 @@ section > .label {
 }
 
 .fotos img {
-  flex: var(--r, 1) 1 0;
+  flex: 1 1 0;
   min-width: 0;
   height: auto;
   background: var(--bg-2);
@@ -765,7 +879,7 @@ section > .label {
 /* boeken: terug de grond in, in beide standen donker */
 
 #boeken {
-  background: var(--bg-boek);
+  background: var(--spikkel-aarde), var(--bg-boek);
   color: #f0e8da;
   text-align: center;
 }
@@ -794,7 +908,7 @@ section > .label {
 
 .boekwidget p {
   margin: 0;
-  font-style: italic;
+  font-style: var(--schuin);
   color: #7a6c60;
 }
 
@@ -860,18 +974,14 @@ footer p {
     gap: 6px;
   }
 
+  .plaatjes {
+    grid-column: 1;
+    gap: 6px;
+  }
+
   .dagen {
     grid-template-columns: 1fr;
     gap: 36px;
-  }
-
-  .fotos {
-    flex-direction: column;
-  }
-
-  .fotos img {
-    flex: none;
-    width: 100%;
   }
 
   .praktisch div {
