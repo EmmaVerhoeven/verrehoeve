@@ -142,9 +142,48 @@ h3 {
   text-decoration-color: var(--accent);
 }
 
-.balk .thuis {
-  font-style: var(--schuin);
-  font-size: 1.2rem;
+/* het logootje van de hoofdsite, klein als een stempel linksboven */
+.stempel {
+  display: block;
+  width: 112px;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+.stempel:hover {
+  opacity: 1;
+}
+
+.stempel svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* in de winter een tintje dieper, zodat hij in de nachtlucht past.
+   in de lente, en als je eroverheen beweegt, het echte tomaatrood */
+.stempel ellipse {
+  fill: #cf4326;
+  transition: fill 0.3s;
+}
+
+.stempel:hover ellipse,
+:root[data-thema="lente"] .stempel ellipse {
+  fill: tomato;
+}
+
+.stempel .naam {
+  fill: white;
+  font-size: 36px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.stempel .boog {
+  fill: white;
+  font-style: italic;
+  font-size: 14px;
+  text-anchor: middle;
 }
 
 .balk nav {
@@ -165,6 +204,9 @@ h3 {
   background: none;
   color: inherit;
   font: inherit;
+  font-size: 0.8em; /* hoofdletters ogen groter, dus een maatje kleiner */
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   cursor: pointer;
 }
 
@@ -686,7 +728,7 @@ h3 {
   margin: 50px 24px 0;
   padding-bottom: var(--zin-ruimte);
   font-style: var(--schuin);
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   color: var(--hero-zin);
   transition: color 0.8s;
 }
@@ -965,6 +1007,10 @@ footer p {
     font-size: 1rem;
   }
 
+  .stempel {
+    width: 92px;
+  }
+
   .licht {
     width: 64px;
     height: 64px;
@@ -1012,6 +1058,34 @@ footer p {
 /* ---------- HEEL SMAL: de buitenste groenten vallen weg ---------- */
 
 @media (max-width: 560px) {
+  /* het logootje wordt piepklein en het menu schuift ernaast, op dezelfde regel.
+     de schakelaar past daar niet meer bij en zakt een regel lager */
+  .balk {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 8px; /* even veel ruimte tussen logo en menu als tussen de woorden */
+  }
+
+  .stempel {
+    flex: none;
+    width: 64px;
+  }
+
+  .balk nav {
+    flex: 1;
+    min-width: 0;
+    justify-content: flex-start;
+    gap: 8px;
+    /* de letters groeien mee met het scherm, zodat de rij precies naast het logootje past */
+    font-size: clamp(0.8rem, calc((100vw - 140px) / 15.4), 1.1rem);
+  }
+
+  /* de schakelaar staat op zijn eigen regel, rechts, met wat kleinere letters */
+  .wissel {
+    margin-left: auto;
+    font-size: 0.72rem;
+  }
+
   .groente:first-child,
   .groente:last-child {
     display: none;
