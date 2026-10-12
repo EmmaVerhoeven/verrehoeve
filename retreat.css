@@ -2,536 +2,914 @@
    De Verre Hoeve · winterretreat
    eigen sfeer, wel familie van de hoofdsite:
    Times New Roman, kleine letters, rustig
+
+   twee standen, met de schakelaar bovenin:
+   winter (donker, sterren, de maan)  en  lente (licht, stuifmeel, de zon)
    ============================================ */
 
+/* ---------- KLEUREN ---------- */
+
+/* winter is de standaard */
 :root {
-    --nacht: #1d2636;      /* donkere winteravond */
-    --schemer: #56627a;    /* blauwgrijs */
-    --vorst: #e6eaec;      /* bevroren ochtend */
-    --sneeuw: #f7f5f0;     /* achtergrond */
-    --inkt: #1d2636;       /* tekst */
-    --zacht: #6c7383;      /* lichte tekst */
-    --kaars: #c4884a;      /* warm licht */
-    --lijn: #cfd4d8;
+  color-scheme: dark;
+
+  --bg: #211a17; /* diepe grond, ook de achtergrond van de pagina */
+  --bg-2: #2a211c; /* iets lichter vlak */
+  --bg-boek: #15100e; /* boeken-sectie */
+
+  --tekst: #f0e8da;
+  --tekst-mid: #d3c8b8;
+  --tekst-zacht: #b3a595;
+  --lijn: #43372f;
+  --lijn-sterk: #6b5a4c;
+  --accent: #e8a35a; /* warm kaarslicht */
+
+  --hero-tekst: #f3ecde;
+  --hero-label: #c9bfae;
+  --hero-zin: #b9ab9a;
+  --knop-hover: #1b2233;
+
+  --licht: #f5ebc8; /* de maan */
+  --licht-glow: rgba(245, 235, 200, 0.28);
+
+  --widget-bg: #f7f4ec; /* het boekingsvak blijft licht, embeds zijn meestal wit */
+  --widget-tekst: #2a2420;
+}
+
+:root[data-thema="lente"] {
+  color-scheme: light;
+
+  --bg: #f7f4ec;
+  --bg-2: #ebe4d3;
+  --bg-boek: #2e2019;
+
+  --tekst: #2a2420;
+  --tekst-mid: #4a3f37;
+  --tekst-zacht: #7a6c60;
+  --lijn: #d9cfbd;
+  --lijn-sterk: #8a6a52;
+  --accent: #d9622b; /* radijs, pompoen */
+
+  --hero-tekst: #2a2420;
+  --hero-label: #56616a;
+  --hero-zin: #6f5f50;
+  --knop-hover: #f7f4ec;
+
+  --licht: #f6d06b; /* de zon */
+  --licht-glow: rgba(246, 208, 107, 0.38);
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: 'Times New Roman', Times, serif;
-    color: var(--inkt);
-    background: var(--sneeuw);
-    font-size: 1.15rem;
-    line-height: 1.65;
-    overflow-x: hidden;
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  color: var(--tekst);
+  background: var(--bg);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  overflow-x: hidden;
+  transition:
+    background-color 0.8s,
+    color 0.8s;
 }
 
 a {
-    color: var(--inkt);
-    text-decoration-color: var(--kaars);
-    text-underline-offset: 3px;
+  color: var(--tekst);
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
 }
 
 img {
-    display: block;
-    max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
-h1, h2, h3 {
-    font-weight: normal;
+h1,
+h2,
+h3 {
+  font-weight: normal;
 }
 
 .smal {
-    max-width: 640px;
-    margin: 0 auto;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 .label {
-    font-variant: small-caps;
-    letter-spacing: 0.12em;
-    font-size: 0.95rem;
-    color: var(--zacht);
+  font-variant: small-caps;
+  letter-spacing: 0.12em;
+  font-size: 0.95rem;
+  color: var(--tekst-zacht);
 }
-
 
 /* ---------- BOVENBALK ---------- */
 
 .balk {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px 24px;
-    padding: 22px 32px;
-    color: var(--sneeuw);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  padding: 22px 32px;
+  color: var(--hero-tekst);
+  transition: color 0.8s;
 }
 
 .balk a {
-    color: var(--sneeuw);
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 .balk a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
 }
 
 .balk .thuis {
-    font-style: italic;
-    font-size: 1.2rem;
+  font-style: italic;
+  font-size: 1.2rem;
 }
 
 .balk nav {
-    display: flex;
-    gap: 22px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
 }
 
+/* ---------- SCHAKELAAR: winter / lente ---------- */
 
-/* ---------- HERO: winterschemer ---------- */
+.wissel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.wissel .w-winter,
+.wissel .w-lente {
+  opacity: 0.5;
+  transition: opacity 0.5s;
+}
+
+:root:not([data-thema="lente"]) .wissel .w-winter,
+:root[data-thema="lente"] .wissel .w-lente {
+  opacity: 1;
+}
+
+.wissel .schakelaar {
+  position: relative;
+  width: 54px;
+  height: 28px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.wissel .knop-rond {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--licht);
+  box-shadow: 0 0 10px 2px var(--licht-glow);
+  transition:
+    transform 0.5s,
+    background-color 0.8s,
+    box-shadow 0.8s;
+}
+
+:root[data-thema="lente"] .wissel .knop-rond {
+  transform: translateX(26px);
+}
+
+.wissel:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+/* ---------- HERO: een lange gradient van nachtlucht naar bodem ---------- */
 
 .hero {
-    position: relative;
-    min-height: 100vh;
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 120px 24px 180px;
-    color: var(--sneeuw);
-    background: linear-gradient(
-        to bottom,
-        #141b28 0%,
-        var(--nacht) 30%,
-        var(--schemer) 68%,
-        #a9a5a8 88%,
-        #d9cfc4 100%
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  text-align: center;
+  color: var(--hero-tekst);
+  overflow: hidden;
+  transition: color 0.8s;
+}
+
+/* twee lagen die in elkaar overlopen als je wisselt: per stand een lucht en een bodem */
+.hero {
+  --veg-h: clamp(120px, 16vw, 220px); /* hoogte van de getekende groenten */
+  --zin-ruimte: 200px; /* hoeveel aarde er onder de groenten zit */
+}
+
+.laag {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: opacity 1s;
+}
+
+.laag.winter {
+  background: linear-gradient(to bottom, #1a2c38 0%, #273e51 45%, #d15314 100%);
+}
+
+.laag.lente {
+  opacity: 0;
+  background: linear-gradient(to bottom, #7cbad3 0%, #c2dcde 40%, #a3cb76 100%);
+}
+
+:root[data-thema="lente"] .laag.winter {
+  opacity: 0;
+}
+
+:root[data-thema="lente"] .laag.lente {
+  opacity: 1;
+}
+
+/* de bodem: een golvende, zachte rand en daaronder aarde die uitloopt naar de pagina.
+   de rand ligt ongeveer op 40% van de hoogte van de groenten, zodat hun onderkant in de grond staat */
+.bodem {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(var(--veg-h) * 0.4 + var(--zin-ruimte) + 110px);
+}
+
+/* het licht aan de horizon, vlak boven de bodem */
+.bodem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 280px;
+  pointer-events: none;
+}
+
+.bodem .vlak {
+  position: absolute;
+  inset: 0;
+}
+
+.bodem .rand {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% - 1px);
+  width: 100%;
+  height: clamp(40px, 4.2vw, 120px);
+  overflow: visible;
+}
+
+.winter .bodem::before {
+  background: linear-gradient(to top, rgba(214, 150, 84, 0.3), transparent);
+}
+
+.winter .bodem .vlak {
+  background: linear-gradient(to bottom, #3d2c24 0%, #2d221c 45%, #211a17 100%);
+}
+
+.winter .rand .voor {
+  fill: #3d2c24;
+}
+
+.winter .rand .achter {
+  fill: #3d2c24;
+  opacity: 0.55;
+}
+
+.lente .bodem::before {
+  background: linear-gradient(to top, rgba(255, 236, 170, 0.65), transparent);
+}
+
+.lente .bodem .vlak {
+  background: linear-gradient(
+    to bottom,
+    #6e5d45 0%,
+    #8b7c63 30%,
+    #ecdfc6 72%,
+    #f7f4ec 100%
+  );
+}
+
+.lente .rand .voor {
+  fill: #6e5d45;
+}
+
+.lente .rand .achter {
+  fill: #6e5d45;
+  opacity: 0.55;
+}
+
+/* sterretjes (winter) en stuifmeel (lente), vervagen naar de aarde toe */
+.deeltjes {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 48%,
+    transparent 72%
+  );
+  mask-image: linear-gradient(to bottom, #000 0%, #000 48%, transparent 72%);
+}
+
+.sterren,
+.stuifmeel {
+  position: absolute;
+  inset: 0;
+  transition: opacity 1s;
+}
+
+/* elke ster is een eigen stipje met een eigen formaat, snelheid en moment:
+   sommige fonkelen snel, andere langzaam, een paar staan gewoon stil */
+.sterren i {
+  position: absolute;
+  width: var(--g);
+  height: var(--g);
+  border-radius: 50%;
+  background: #ffdca0;
+  box-shadow: 0 0 calc(var(--g) * 2.5) rgba(255, 220, 160, 0.55);
+  opacity: var(--o);
+}
+
+.sterren i.fonkel {
+  animation: twinkel var(--d) ease-in-out var(--v) infinite;
+}
+
+@keyframes twinkel {
+  0%,
+  100% {
+    opacity: var(--o);
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* stuifmeel: zachte stipjes die langzaam omhoog zweven, de lente komt eraan */
+.stuifmeel {
+  opacity: 0;
+  inset: 0 0 -300px 0;
+  background-image:
+    radial-gradient(
+      3px 3px at 40px 50px,
+      rgba(255, 250, 205, 0.95),
+      transparent
+    ),
+    radial-gradient(
+      2.4px 2.4px at 180px 140px,
+      rgba(255, 250, 205, 0.9),
+      transparent
+    ),
+    radial-gradient(
+      3.2px 3.2px at 90px 240px,
+      rgba(255, 250, 205, 0.9),
+      transparent
+    ),
+    radial-gradient(
+      2px 2px at 250px 90px,
+      rgba(255, 250, 205, 0.85),
+      transparent
+    ),
+    radial-gradient(
+      2.6px 2.6px at 270px 220px,
+      rgba(255, 250, 205, 0.9),
+      transparent
     );
-    overflow: hidden;
+  background-size: 300px 300px;
+  animation: omhoog 45s linear infinite;
 }
 
-.maan {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background: #f3eee2;
-    box-shadow: 0 0 60px 18px rgba(243, 238, 226, 0.25);
-    margin-bottom: 40px;
+:root[data-thema="lente"] .sterren {
+  opacity: 0;
 }
 
-.hero .label {
-    color: #d9dde3;
+:root[data-thema="lente"] .stuifmeel {
+  opacity: 1;
 }
 
-.hero h1 {
-    font-size: clamp(3rem, 9vw, 6.5rem);
-    font-style: italic;
-    line-height: 1;
-    margin: 12px 0 18px;
-}
-
-.hero .ondertitel {
-    font-size: 1.35rem;
-    max-width: 520px;
-    margin: 0 auto 36px;
-}
-
-/* sneeuw: twee lagen stipjes die langzaam vallen */
-.hero::before,
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: -400px 0 0 0;
-    pointer-events: none;
-    background-image:
-        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-        radial-gradient(1.5px 1.5px at 90px 140px, #fff, transparent),
-        radial-gradient(2px 2px at 160px 60px, #fff, transparent),
-        radial-gradient(1px 1px at 230px 200px, #fff, transparent),
-        radial-gradient(1.5px 1.5px at 300px 90px, #fff, transparent),
-        radial-gradient(1px 1px at 360px 260px, #fff, transparent);
-    background-size: 400px 400px;
-    opacity: 0.55;
-    animation: sneeuw 28s linear infinite;
-}
-
-.hero::after {
-    background-size: 260px 260px;
-    opacity: 0.3;
-    animation-duration: 45s;
-}
-
-@keyframes sneeuw {
-    from { transform: translateY(0); }
-    to   { transform: translateY(400px); }
+@keyframes omhoog {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-300px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero::before,
-    .hero::after {
-        animation: none;
-    }
+  .sterren i.fonkel,
+  .stuifmeel {
+    animation: none;
+  }
 }
 
-.heuvels {
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 100%;
-    height: 140px;
-    z-index: 1;
+/* de maan, die in de lente een zon wordt */
+.licht {
+  position: relative;
+  z-index: 2;
+  width: 90px;
+  height: 90px;
+  margin: 140px auto 36px;
+  border-radius: 50%;
+  background: var(--licht);
+  box-shadow: 0 0 60px 18px var(--licht-glow);
+  transition:
+    background-color 1s,
+    box-shadow 1s,
+    transform 1s;
 }
 
-.hero > *:not(.heuvels) {
-    position: relative;
-    z-index: 2;
+:root[data-thema="lente"] .licht {
+  box-shadow: 0 0 80px 30px var(--licht-glow);
+  transform: scale(1.05);
 }
 
+.hero .tekst {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px;
+}
+
+.hero .label {
+  color: var(--hero-label);
+  transition: color 0.8s;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-style: italic;
+  line-height: 1;
+  margin: 12px 0 18px;
+}
+
+.hero .ondertitel {
+  font-size: 1.35rem;
+  max-width: 450px;
+  margin: 0 auto 36px;
+}
+
+/* hier komen de getekende groenten (png met transparante achtergrond).
+   elke groente heeft een eigen formaat via --s in de html: 1 is de standaardhoogte, 0.7 is kleiner */
+.groenten {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%; /* de rij is nooit breder dan het scherm, dus de plaatjes krimpen mee */
+  flex-wrap: nowrap; /* altijd naast elkaar, nooit een rij lager */
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(4px, 3vw, 40px);
+  min-height: clamp(160px, 20vw, 260px);
+  margin-top: 40px;
+  padding: 0 16px;
+}
+
+/* als er te weinig breedte is, krimpen de plaatjes mee en blijven ze op de grondlijn staan */
+.groente {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  flex: 0 1 auto;
+  min-width: 0;
+  margin: 0;
+  outline: none;
+}
+
+.groenten img {
+  flex: 0 1 auto;
+  min-width: 0;
+  height: calc(var(--veg-h) * var(--s, 1));
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: 50% 100%;
+}
+
+/* een paar zinnetjes boven de groente, die verschijnen als je eroverheen beweegt (of erop tikt) */
+.groente figcaption {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  width: min(210px, 60vw);
+  transform: translate(-50%, 6px);
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--hero-tekst);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.4s,
+    transform 0.4s,
+    color 0.8s;
+}
+
+.groente:hover figcaption,
+.groente:focus figcaption {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* de buitenste groenten: tekst naar binnen uitlijnen, zodat hij niet van het scherm valt */
+.groente:first-child figcaption {
+  left: 0;
+  text-align: left;
+  transform: translate(0, 6px);
+}
+
+.groente:last-child figcaption {
+  left: auto;
+  right: 0;
+  text-align: right;
+  transform: translate(0, 6px);
+}
+
+.groente:first-child:hover figcaption,
+.groente:first-child:focus figcaption,
+.groente:last-child:hover figcaption,
+.groente:last-child:focus figcaption {
+  transform: translate(0, 0);
+}
+
+.grondzin {
+  position: relative;
+  z-index: 2;
+  margin: 50px 24px 0;
+  padding-bottom: var(--zin-ruimte);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--hero-zin);
+  transition: color 0.8s;
+}
 
 /* ---------- KNOPPEN ---------- */
 
 .knop {
-    display: inline-block;
-    padding: 12px 26px;
-    border: 1px solid currentColor;
-    border-radius: 999px;
-    text-decoration: none;
-    color: inherit;
-    transition: background 0.3s, color 0.3s;
+  display: inline-block;
+  padding: 12px 26px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .hero .knop:hover {
-    background: var(--sneeuw);
-    color: var(--nacht);
+  background: var(--hero-tekst);
+  color: var(--knop-hover);
 }
-
-.knop.warm {
-    background: var(--kaars);
-    border-color: var(--kaars);
-    color: #fff;
-}
-
-.knop.warm:hover {
-    background: transparent;
-    color: var(--kaars);
-}
-
 
 /* ---------- SECTIES ---------- */
 
 section {
-    padding: 110px 24px;
+  padding: 110px 24px;
+  transition: background-color 0.8s;
+}
+
+section.hero {
+  padding: 0;
 }
 
 section h2 {
-    font-size: clamp(2.2rem, 5vw, 3rem);
-    font-style: italic;
-    text-align: center;
-    margin: 6px 0 50px;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-style: italic;
+  text-align: center;
+  margin: 6px 0 50px;
 }
 
 section > .label {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
 }
-
 
 /* intro */
 
 .intro {
-    padding-top: 90px;
-    padding-bottom: 60px;
+  padding-top: 30px;
+  padding-bottom: 0;
 }
 
 .intro p {
-    font-size: 1.5rem;
-    line-height: 1.55;
-    text-align: center;
-    margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.55;
+  text-align: center;
+  margin: 0;
 }
-
-.sterretje {
-    text-align: center;
-    color: var(--kaars);
-    font-size: 1.4rem;
-    letter-spacing: 1em;
-    margin: 60px 0 0;
-}
-
 
 /* wat gaan we doen */
 
 .onderdelen {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    max-width: 760px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 760px;
 }
 
 .onderdelen li {
-    display: grid;
-    grid-template-columns: 70px 1fr;
-    gap: 20px;
-    padding: 32px 0;
-    border-top: 1px solid var(--lijn);
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 6px 40px;
+  align-items: baseline;
+  padding: 32px 0;
+  border-top: 1px solid var(--lijn);
 }
 
 .onderdelen li:last-child {
-    border-bottom: 1px solid var(--lijn);
-}
-
-.onderdelen .nr {
-    font-style: italic;
-    font-size: 1.6rem;
-    color: var(--kaars);
-    line-height: 1.2;
+  border-bottom: 1px solid var(--lijn);
 }
 
 .onderdelen h3 {
-    font-size: 1.7rem;
-    margin: 0 0 6px;
-    line-height: 1.2;
+  font-size: 1.7rem;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .onderdelen p {
-    margin: 0;
-    color: #3a4252;
+  margin: 0;
+  color: var(--tekst-mid);
 }
-
 
 /* programma */
 
 #programma {
-    background: var(--vorst);
+  background: var(--bg-2);
 }
 
 .dagen {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
-    max-width: 960px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .dagen h3 {
-    font-size: 1.6rem;
-    font-style: italic;
-    margin: 0 0 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--schemer);
+  font-size: 1.6rem;
+  font-style: italic;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--lijn-sterk);
 }
 
 .dagen ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .dagen li {
-    padding: 4px 0;
+  padding: 4px 0;
 }
 
 .dagen time {
-    display: inline-block;
-    width: 3.6em;
-    color: var(--zacht);
-    font-size: 0.95rem;
+  display: inline-block;
+  width: 3.6em;
+  color: var(--tekst-zacht);
+  font-size: 0.95rem;
 }
 
 .voetnoot {
-    text-align: center;
-    font-style: italic;
-    color: var(--zacht);
-    margin: 50px 0 0;
+  text-align: center;
+  font-style: italic;
+  color: var(--tekst-zacht);
+  margin: 50px 0 0;
 }
-
 
 /* slapen */
 
 #slapen p {
-    margin: 0 0 1em;
+  margin: 0 0 1em;
 }
 
+/* elke foto houdt z'n eigen verhouding (--r = breedte / hoogte), samen vullen ze één rij van gelijke hoogte */
 .fotos {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 14px;
-    max-width: 960px;
-    margin: 50px auto 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: 960px;
+  margin: 50px auto 0;
 }
 
 .fotos img {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    background: var(--vorst);
+  flex: var(--r, 1) 1 0;
+  min-width: 0;
+  height: auto;
+  background: var(--bg-2);
 }
-
-.fotos img:first-child {
-    aspect-ratio: auto;
-}
-
 
 /* praktisch */
 
 .praktisch {
-    max-width: 700px;
-    margin: 0 auto;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .praktisch div {
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 20px;
-    padding: 16px 0;
-    border-top: 1px solid var(--lijn);
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 20px;
+  padding: 16px 0;
+  border-top: 1px solid var(--lijn);
 }
 
 .praktisch div:last-child {
-    border-bottom: 1px solid var(--lijn);
+  border-bottom: 1px solid var(--lijn);
 }
 
 .praktisch dt {
-    font-variant: small-caps;
-    letter-spacing: 0.08em;
-    color: var(--zacht);
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--tekst-zacht);
 }
 
 .praktisch dd {
-    margin: 0;
+  margin: 0;
 }
 
-
-/* boeken: terug naar de avond, met een kaarsje */
+/* boeken: terug de grond in, in beide standen donker */
 
 #boeken {
-    background: var(--nacht);
-    color: var(--sneeuw);
-    text-align: center;
+  background: var(--bg-boek);
+  color: #f0e8da;
+  text-align: center;
 }
 
 #boeken .label {
-    color: #aab3c2;
+  color: #c9b9a6;
 }
 
 #boeken a {
-    color: var(--sneeuw);
+  color: #f0e8da;
 }
 
 .plekken {
-    font-size: 1.4rem;
-    margin: -20px 0 40px;
+  font-size: 1.4rem;
+  margin: -20px 0 40px;
 }
 
 .boekwidget {
-    max-width: 640px;
-    margin: 0 auto 40px;
-    padding: 40px 24px;
-    background: var(--sneeuw);
-    color: var(--inkt);
-    border-radius: 6px;
+  max-width: 640px;
+  margin: 0 auto 40px;
+  padding: 40px 24px;
+  background: var(--widget-bg);
+  color: var(--widget-tekst);
+  border-radius: 6px;
 }
 
 .boekwidget p {
-    margin: 0;
-    font-style: italic;
-    color: var(--zacht);
+  margin: 0;
+  font-style: italic;
+  color: #7a6c60;
 }
-
 
 /* voet */
 
 footer {
-    padding: 60px 24px 70px;
-    text-align: center;
-    color: var(--zacht);
+  padding: 60px 24px 70px;
+  text-align: center;
+  color: var(--tekst-zacht);
 }
 
 footer img {
-    width: 120px;
-    margin: 0 auto 20px;
+  width: 120px;
+  margin: 0 auto 20px;
 }
 
 footer p {
-    max-width: 520px;
-    margin: 0 auto;
+  max-width: 520px;
+  margin: 0 auto;
 }
-
 
 /* ---------- MOBIEL ---------- */
 
 @media (max-width: 760px) {
+  body {
+    font-size: 1.08rem;
+  }
 
-    body {
-        font-size: 1.08rem;
-    }
+  .balk {
+    padding: 18px 16px;
+  }
 
-    .balk {
-        padding: 18px 16px;
-    }
+  .balk nav {
+    gap: 14px;
+    font-size: 1rem;
+  }
 
-    .balk nav {
-        gap: 14px;
-        font-size: 1rem;
-    }
+  .licht {
+    width: 64px;
+    height: 64px;
+    margin: 170px auto 28px;
+  }
 
-    .hero {
-        padding: 140px 16px 150px;
-    }
+  .hero {
+    --veg-h: clamp(88px, 15vw, 130px);
+    --zin-ruimte: 150px;
+  }
 
-    .maan {
-        width: 64px;
-        height: 64px;
-        margin-bottom: 28px;
-    }
+  .groenten {
+    padding: 0 8px;
+  }
 
-    .heuvels {
-        height: 80px;
-    }
+  section {
+    padding: 70px 16px;
+  }
 
-    section {
-        padding: 70px 16px;
-    }
+  .intro p {
+    font-size: 1.25rem;
+  }
 
-    .intro p {
-        font-size: 1.25rem;
-    }
+  .onderdelen li {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
 
-    .onderdelen li {
-        grid-template-columns: 44px 1fr;
-        gap: 10px;
-    }
+  .dagen {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
 
-    .dagen {
-        grid-template-columns: 1fr;
-        gap: 36px;
-    }
+  .fotos {
+    flex-direction: column;
+  }
 
-    .fotos {
-        grid-template-columns: 1fr 1fr;
-    }
+  .fotos img {
+    flex: none;
+    width: 100%;
+  }
 
-    .fotos img:first-child {
-        grid-column: 1 / -1;
-        aspect-ratio: 4 / 3;
-    }
+  .praktisch div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
 
-    .praktisch div {
-        grid-template-columns: 1fr;
-        gap: 2px;
-    }
+/* ---------- HEEL SMAL: de buitenste groenten vallen weg ---------- */
+
+@media (max-width: 560px) {
+  .groente:first-child,
+  .groente:last-child {
+    display: none;
+  }
+
+  /* nu staan de tweede en de voorlaatste aan de rand */
+  .groente:nth-child(2) figcaption {
+    left: 0;
+    text-align: left;
+    transform: translate(0, 6px);
+  }
+
+  .groente:nth-last-child(2) figcaption {
+    left: auto;
+    right: 0;
+    text-align: right;
+    transform: translate(0, 6px);
+  }
+
+  .groente:nth-child(2):hover figcaption,
+  .groente:nth-child(2):focus figcaption,
+  .groente:nth-last-child(2):hover figcaption,
+  .groente:nth-last-child(2):focus figcaption {
+    transform: translate(0, 0);
+  }
+
+  .hero {
+    --veg-h: 108px;
+  }
 }

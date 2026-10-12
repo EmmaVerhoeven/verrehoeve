@@ -4,40 +4,232 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>winterretreat · De Verre Hoeve</title>
+    <title>winterretreat · de Verre Hoeve</title>
     <meta name="description"
         content="een winterweekend met yoga, regeneratief eten en creatieve workshops, met de zussen van De Verre Hoeve.">
     <link rel="stylesheet" href="retreat.css">
+    <script>
+        /* onthoud of iemand de lente-stand gekozen heeft, voordat de pagina getekend wordt */
+        try {
+            if (localStorage.getItem('retreat-thema') === 'lente') {
+                document.documentElement.dataset.thema = 'lente';
+            }
+        } catch (e) { }
+    </script>
 </head>
 
 <body>
 
     <!-- BOVENBALK -->
     <header class="balk">
-        <a href="/" class="thuis">De Verre Hoeve</a>
+        <a href="/" class="thuis">de Verre Hoeve</a>
         <nav>
             <a href="#wat">wat</a>
             <a href="#programma">programma</a>
             <a href="#slapen">slapen</a>
             <a href="#praktisch">praktisch</a>
             <a href="#boeken">boeken</a>
+            <button class="wissel" type="button" aria-pressed="false" aria-label="wissel tussen winter en lente">
+                <span class="w-winter">winter</span>
+                <span class="schakelaar"><span class="knop-rond"></span></span>
+                <span class="w-lente">lente</span>
+            </button>
         </nav>
     </header>
 
 
-    <!-- HERO -->
+    <!-- HERO: een lange gradient van nachtlucht naar bodem -->
     <section class="hero">
-        <div class="maan"></div>
+        <div class="laag winter" aria-hidden="true">
+            <div class="bodem">
+                <svg class="rand" viewBox="0 0 1440 60" preserveAspectRatio="xMidYMax slice">
+                    <defs>
+                        <filter id="zacht-w" x="-5%" y="-60%" width="110%" height="220%">
+                            <feGaussianBlur stdDeviation="1.6" />
+                        </filter>
+                    </defs>
+                    <path class="achter" filter="url(#zacht-w)"
+                        d="M0,24 C140,2 280,38 460,20 C640,2 760,36 960,16 C1120,0 1260,32 1440,14 L1440,62 L0,62 Z" />
+                    <path class="voor" filter="url(#zacht-w)"
+                        d="M0,34 C130,12 250,46 420,30 C580,14 700,44 880,28 C1040,12 1180,42 1310,26 C1380,18 1415,30 1440,28 L1440,62 L0,62 Z" />
+                </svg>
+                <div class="vlak"></div>
+            </div>
+        </div>
+        <div class="laag lente" aria-hidden="true">
+            <div class="bodem">
+                <svg class="rand" viewBox="0 0 1440 60" preserveAspectRatio="xMidYMax slice">
+                    <defs>
+                        <filter id="zacht-l" x="-5%" y="-60%" width="110%" height="220%">
+                            <feGaussianBlur stdDeviation="1.6" />
+                        </filter>
+                    </defs>
+                    <path class="achter" filter="url(#zacht-l)"
+                        d="M0,24 C140,2 280,38 460,20 C640,2 760,36 960,16 C1120,0 1260,32 1440,14 L1440,62 L0,62 Z" />
+                    <path class="voor" filter="url(#zacht-l)"
+                        d="M0,34 C130,12 250,46 420,30 C580,14 700,44 880,28 C1040,12 1180,42 1310,26 C1380,18 1415,30 1440,28 L1440,62 L0,62 Z" />
+                </svg>
+                <div class="vlak"></div>
+            </div>
+        </div>
+        <div class="deeltjes" aria-hidden="true">
+            <div class="sterren">
+                <i style="left:32.7%;top:9.3%;--g:2.6px;--o:0.32"></i>
+                <i class="fonkel" style="left:10.2%;top:33.1%;--g:2.2px;--o:0.4;--d:5.4s;--v:-2.2s"></i>
+                <i class="fonkel" style="left:55.0%;top:4.3%;--g:2.2px;--o:0.36;--d:6.7s;--v:-8.5s"></i>
+                <i style="left:57.6%;top:22.8%;--g:1.6px;--o:0.32"></i>
+                <i class="fonkel" style="left:29.4%;top:8.9%;--g:1.4px;--o:0.56;--d:7.0s;--v:-0.9s"></i>
+                <i class="fonkel" style="left:57.0%;top:11.3%;--g:1.4px;--o:0.55;--d:3.2s;--v:-1.9s"></i>
+                <i style="left:67.7%;top:24.5%;--g:1.8px;--o:0.51"></i>
+                <i class="fonkel" style="left:36.4%;top:14.7%;--g:1.6px;--o:0.61;--d:6.4s;--v:-4.7s"></i>
+                <i class="fonkel" style="left:86.8%;top:41.1%;--g:1.8px;--o:0.57;--d:6.0s;--v:-1.5s"></i>
+                <i class="fonkel" style="left:34.5%;top:52.3%;--g:2px;--o:0.32;--d:7.5s;--v:-5.2s"></i>
+                <i class="fonkel" style="left:86.8%;top:18.3%;--g:2.6px;--o:0.46;--d:7.7s;--v:-0.6s"></i>
+                <i class="fonkel" style="left:10.2%;top:15.8%;--g:2.6px;--o:0.6;--d:7.1s;--v:-5.8s"></i>
+                <i style="left:98.3%;top:46.2%;--g:1.8px;--o:0.62"></i>
+                <i class="fonkel" style="left:35.0%;top:52.7%;--g:1.8px;--o:0.38;--d:3.2s;--v:-6.9s"></i>
+                <i class="fonkel" style="left:13.7%;top:14.6%;--g:2px;--o:0.71;--d:3.8s;--v:-3.6s"></i>
+                <i class="fonkel" style="left:28.2%;top:8.5%;--g:2px;--o:0.69;--d:5.4s;--v:-3.2s"></i>
+                <i class="fonkel" style="left:87.7%;top:53.7%;--g:1.6px;--o:0.34;--d:6.9s;--v:-0.1s"></i>
+                <i class="fonkel" style="left:82.4%;top:11.0%;--g:1.8px;--o:0.3;--d:5.1s;--v:-5.1s"></i>
+                <i class="fonkel" style="left:94.4%;top:39.0%;--g:2.2px;--o:0.73;--d:7.4s;--v:-4.1s"></i>
+                <i class="fonkel" style="left:86.4%;top:53.4%;--g:2.6px;--o:0.66;--d:5.3s;--v:-0.9s"></i>
+                <i class="fonkel" style="left:63.2%;top:4.4%;--g:1.4px;--o:0.74;--d:3.5s;--v:-5.4s"></i>
+                <i class="fonkel" style="left:11.0%;top:32.2%;--g:2.2px;--o:0.35;--d:3.0s;--v:-7.9s"></i>
+                <i class="fonkel" style="left:61.2%;top:9.2%;--g:1.8px;--o:0.73;--d:5.7s;--v:-1.0s"></i>
+                <i class="fonkel" style="left:48.8%;top:54.8%;--g:2px;--o:0.52;--d:3.4s;--v:-3.1s"></i>
+                <i class="fonkel" style="left:26.9%;top:46.6%;--g:1.6px;--o:0.53;--d:8.7s;--v:-3.3s"></i>
+                <i style="left:68.6%;top:51.3%;--g:3px;--o:0.54"></i>
+                <i style="left:85.6%;top:39.3%;--g:1.8px;--o:0.53"></i>
+                <i class="fonkel" style="left:35.9%;top:13.3%;--g:2.2px;--o:0.65;--d:4.2s;--v:-7.3s"></i>
+                <i class="fonkel" style="left:97.5%;top:47.9%;--g:3px;--o:0.41;--d:7.8s;--v:-1.8s"></i>
+                <i class="fonkel" style="left:49.3%;top:41.2%;--g:1.4px;--o:0.66;--d:4.0s;--v:-5.4s"></i>
+                <i style="left:34.7%;top:45.5%;--g:2.6px;--o:0.74"></i>
+                <i class="fonkel" style="left:36.7%;top:13.1%;--g:1.6px;--o:0.51;--d:5.8s;--v:-8.9s"></i>
+                <i class="fonkel" style="left:60.8%;top:1.1%;--g:2.6px;--o:0.45;--d:8.0s;--v:-1.1s"></i>
+                <i class="fonkel" style="left:39.1%;top:40.1%;--g:1.6px;--o:0.52;--d:7.7s;--v:-3.0s"></i>
+                <i style="left:79.5%;top:54.4%;--g:2px;--o:0.51"></i>
+                <i class="fonkel" style="left:9.3%;top:9.7%;--g:1.6px;--o:0.31;--d:5.7s;--v:-5.9s"></i>
+                <i class="fonkel" style="left:60.9%;top:33.8%;--g:2px;--o:0.6;--d:6.2s;--v:-1.2s"></i>
+                <i style="left:2.4%;top:54.4%;--g:2.6px;--o:0.35"></i>
+                <i class="fonkel" style="left:14.6%;top:55.3%;--g:1.6px;--o:0.67;--d:4.4s;--v:-2.6s"></i>
+                <i style="left:24.6%;top:33.3%;--g:1.8px;--o:0.54"></i>
+                <i style="left:7.0%;top:41.7%;--g:2px;--o:0.6"></i>
+                <i class="fonkel" style="left:51.6%;top:46.5%;--g:2.2px;--o:0.36;--d:6.0s;--v:-7.9s"></i>
+                <i class="fonkel" style="left:77.1%;top:34.5%;--g:3px;--o:0.66;--d:5.7s;--v:-6.5s"></i>
+                <i class="fonkel" style="left:55.5%;top:18.9%;--g:2.2px;--o:0.54;--d:7.6s;--v:-7.9s"></i>
+                <i class="fonkel" style="left:6.6%;top:11.5%;--g:1.4px;--o:0.65;--d:6.3s;--v:-6.8s"></i>
+                <i class="fonkel" style="left:90.4%;top:25.4%;--g:2.2px;--o:0.74;--d:4.0s;--v:-2.5s"></i>
+                <i class="fonkel" style="left:50.8%;top:45.4%;--g:2.2px;--o:0.72;--d:8.2s;--v:-8.5s"></i>
+                <i class="fonkel" style="left:26.4%;top:31.8%;--g:1.6px;--o:0.68;--d:3.6s;--v:-4.0s"></i>
+                <i class="fonkel" style="left:8.1%;top:14.2%;--g:1.4px;--o:0.4;--d:3.6s;--v:-7.0s"></i>
+                <i style="left:93.1%;top:36.4%;--g:1.8px;--o:0.36"></i>
+                <i class="fonkel" style="left:95.8%;top:13.1%;--g:1.4px;--o:0.48;--d:8.9s;--v:-7.5s"></i>
+                <i class="fonkel" style="left:16.8%;top:24.7%;--g:2.2px;--o:0.48;--d:5.0s;--v:-0.8s"></i>
+                <i class="fonkel" style="left:36.9%;top:19.6%;--g:2px;--o:0.5;--d:4.9s;--v:-5.6s"></i>
+                <i style="left:51.2%;top:4.5%;--g:3px;--o:0.4"></i>
+                <i style="left:9.2%;top:16.0%;--g:3px;--o:0.38"></i>
+                <i class="fonkel" style="left:81.3%;top:47.7%;--g:2.6px;--o:0.67;--d:3.7s;--v:-8.3s"></i>
+                <i style="left:56.9%;top:39.5%;--g:1.4px;--o:0.43"></i>
+                <i class="fonkel" style="left:19.0%;top:50.2%;--g:1.8px;--o:0.72;--d:7.8s;--v:-0.8s"></i>
+                <i class="fonkel" style="left:84.9%;top:4.7%;--g:3px;--o:0.35;--d:9.0s;--v:-3.8s"></i>
+                <i class="fonkel" style="left:90.7%;top:35.2%;--g:1.4px;--o:0.54;--d:3.5s;--v:-1.5s"></i>
+                <i class="fonkel" style="left:5.9%;top:12.1%;--g:1.8px;--o:0.58;--d:4.1s;--v:-4.0s"></i>
+                <i class="fonkel" style="left:66.9%;top:15.9%;--g:3px;--o:0.31;--d:2.9s;--v:-6.6s"></i>
+                <i class="fonkel" style="left:55.0%;top:11.4%;--g:2px;--o:0.41;--d:6.9s;--v:-5.9s"></i>
+                <i class="fonkel" style="left:65.3%;top:31.0%;--g:2px;--o:0.74;--d:4.1s;--v:-2.1s"></i>
+                <i class="fonkel" style="left:20.5%;top:49.5%;--g:2.6px;--o:0.59;--d:5.0s;--v:-0.5s"></i>
+                <i class="fonkel" style="left:13.7%;top:4.9%;--g:2.6px;--o:0.7;--d:3.1s;--v:-6.0s"></i>
+                <i class="fonkel" style="left:38.3%;top:28.8%;--g:1.8px;--o:0.57;--d:3.1s;--v:-1.7s"></i>
+                <i style="left:27.4%;top:1.2%;--g:1.8px;--o:0.73"></i>
+                <i class="fonkel" style="left:54.6%;top:14.4%;--g:1.8px;--o:0.4;--d:4.9s;--v:-0.8s"></i>
+                <i class="fonkel" style="left:28.3%;top:37.1%;--g:1.6px;--o:0.53;--d:4.4s;--v:-0.8s"></i>
+                <i class="fonkel" style="left:40.2%;top:3.3%;--g:1.4px;--o:0.43;--d:3.3s;--v:-8.6s"></i>
+                <i class="fonkel" style="left:84.6%;top:9.5%;--g:2.6px;--o:0.65;--d:7.5s;--v:-6.5s"></i>
+                <i class="fonkel" style="left:49.4%;top:16.6%;--g:2.2px;--o:0.59;--d:8.0s;--v:-8.0s"></i>
+                <i style="left:62.5%;top:41.4%;--g:3px;--o:0.53"></i>
+                <i style="left:74.8%;top:32.3%;--g:3px;--o:0.66"></i>
+                <i class="fonkel" style="left:58.2%;top:50.1%;--g:2.6px;--o:0.73;--d:3.3s;--v:-0.4s"></i>
+                <i class="fonkel" style="left:63.4%;top:53.8%;--g:2px;--o:0.68;--d:6.7s;--v:-5.6s"></i>
+                <i class="fonkel" style="left:67.7%;top:27.9%;--g:1.4px;--o:0.51;--d:8.6s;--v:-8.1s"></i>
+                <i class="fonkel" style="left:10.0%;top:29.9%;--g:2.6px;--o:0.63;--d:3.3s;--v:-2.4s"></i>
+                <i class="fonkel" style="left:72.5%;top:12.3%;--g:2.6px;--o:0.59;--d:8.0s;--v:-0.7s"></i>
+                <i class="fonkel" style="left:90.2%;top:16.8%;--g:1.4px;--o:0.58;--d:3.3s;--v:-1.3s"></i>
+                <i class="fonkel" style="left:25.9%;top:41.9%;--g:1.8px;--o:0.58;--d:5.8s;--v:-4.4s"></i>
+                <i class="fonkel" style="left:96.3%;top:6.5%;--g:1.6px;--o:0.6;--d:6.0s;--v:-4.2s"></i>
+                <i style="left:46.7%;top:7.5%;--g:2.2px;--o:0.39"></i>
+                <i class="fonkel" style="left:92.8%;top:2.0%;--g:2px;--o:0.33;--d:9.0s;--v:-8.9s"></i>
+                <i class="fonkel" style="left:38.9%;top:51.4%;--g:1.6px;--o:0.33;--d:7.4s;--v:-2.4s"></i>
+                <i style="left:36.2%;top:34.2%;--g:2.6px;--o:0.53"></i>
+                <i class="fonkel" style="left:69.9%;top:13.7%;--g:2px;--o:0.48;--d:8.7s;--v:-6.1s"></i>
+                <i class="fonkel" style="left:40.7%;top:41.0%;--g:2px;--o:0.45;--d:8.0s;--v:-0.0s"></i>
+                <i class="fonkel" style="left:74.6%;top:47.2%;--g:1.4px;--o:0.72;--d:2.9s;--v:-6.7s"></i>
+                <i class="fonkel" style="left:25.8%;top:4.6%;--g:2px;--o:0.75;--d:5.0s;--v:-3.9s"></i>
+                <i class="fonkel" style="left:28.0%;top:3.7%;--g:1.4px;--o:0.32;--d:6.7s;--v:-1.3s"></i>
+                <i class="fonkel" style="left:96.2%;top:25.0%;--g:1.8px;--o:0.39;--d:8.7s;--v:-8.0s"></i>
+                <i style="left:80.6%;top:35.7%;--g:2.2px;--o:0.55"></i>
+                <i class="fonkel" style="left:5.8%;top:41.3%;--g:2px;--o:0.58;--d:8.2s;--v:-4.4s"></i>
+            </div>
+            <div class="stuifmeel"></div>
+        </div>
 
-        <span class="label">12 - 14 februari, Sint Agatha</span>
-        <h1>winterretreat</h1>
-        <p class="ondertitel">
-            een weekend vertragen, bewegen, warm eten
-            en samen dromen over hoe het ook anders kan
-        </p>
-        <a href="#boeken" class="knop">boek je plek</a>
+        <div class="licht" aria-hidden="true"></div>
 
+        <div class="tekst">
+            <span class="label">12 - 14 februari, Sint Agatha</span>
+            <h1>winterretreat</h1>
+            <p class="ondertitel">
+                drie dagen yoga, seizoenseten en opladen in een warme boerderij in Brabant
+            </p>
+            <a href="#boeken" class="knop">boek je plekje</a>
+        </div>
 
+        <div class="groenten">
+            <!-- PLACEHOLDERS: vervang elk plaatje door je eigen getekende png (transparante achtergrond),
+                 met dezelfde bestandsnaam in de map "groenten". dan hoef je hier niks te veranderen.
+
+                 --s is de grootte: 1 is de standaardhoogte, 0.7 is kleiner, 1.2 is groter.
+                 de onderkant van elk plaatje staat in de grond, de bovenkant erboven.
+                 meer groenten? kopieer een heel <figure> blok. andere volgorde? verplaats de blokken.
+                 de tekst in <figcaption> verschijnt boven de groente als je eroverheen beweegt. -->
+            <figure class="groente" tabindex="0">
+                <img src="groenten/biet.png" alt="biet" style="--s:1.5">
+                <figcaption>de biet slaat de hele zomer op in haar wortel. wat je nu bewaart, voedt je later.
+                </figcaption>
+            </figure>
+            <figure class="groente" tabindex="0">
+                <img src="groenten/prei.png" alt="prei" style="--s:1.15">
+                <figcaption>prei blijft gewoon op het veld staan, vorst of niet. je hoeft niet te schuilen om de winter
+                    door te komen.</figcaption>
+            </figure>
+            <figure class="groente" tabindex="0">
+                <img src="groenten/boerenkool.png" alt="boerenkool" style="--s:.95">
+                <figcaption>boerenkool wordt pas zoet als de vorst eroverheen is gegaan. kou kan ook iets zachts maken.
+                </figcaption>
+            </figure>
+            <figure class="groente" tabindex="0">
+                <img src="groenten/pastinaak.png" alt="pastinaak" style="--s:1.1">
+                <figcaption>pastinaak groeit traag en diep, maandenlang. goede dingen laten zich niet haasten.
+                </figcaption>
+            </figure>
+            <figure class="groente" tabindex="0">
+                <img src="groenten/paddenstoel.png" alt="paddenstoel" style="--s:1">
+                <figcaption>een paddenstoel is maar het topje. onder de grond is alles met elkaar verbonden.
+                </figcaption>
+            </figure>
+            <figure class="groente" tabindex="0">
+                <img src="groenten/witlof.png" alt="witlof" style="--s:1.2">
+                <figcaption>witlof groeit in het donker, uit een wortel die al geoogst was. ook zonder licht kan er iets
+                    nieuws beginnen.</figcaption>
+            </figure>
+            <figure class="groente" tabindex="0">
+                <img src="groenten/schorseneer.png" alt="schorseneer" style="--s:.4">
+                <figcaption>van buiten zwart en modderig, van binnen wit en zacht. niet alles laat zich meteen zien.
+                </figcaption>
+            </figure>
+        </div>
+
+        <p class="grondzin">de winter is minder kaal dan ze lijkt... alle energie zit onder de grond!</p>
     </section>
 
 
@@ -47,7 +239,6 @@
             <p>
 
             </p>
-            <p class="sterretje">✶ ✶ ✶</p>
         </div>
     </section>
 
@@ -59,48 +250,40 @@
 
         <ol class="onderdelen">
             <li>
-                <span class="nr">i.</span>
-                <div>
-                    <h3>yoga</h3>
-                    <p>
-                        elke ochtend en avond yoga met [naam], onze moeder,
-                        die al [x] jaar lesgeeft. rustig en voor iedereen,
-                        ook als je nog nooit op een mat hebt gestaan.
-                    </p>
-                </div>
+                <h3>yoga</h3>
+                <p>
+                    elke ochtend en avond yoga met [naam], onze moeder,
+                    die al [x] jaar lesgeeft. down to earth en voor iedereen:
+                    even uit je hoofd en terug in je lijf, ook als je nog
+                    nooit op een mat hebt gestaan.
+                </p>
             </li>
             <li>
-                <span class="nr">ii.</span>
-                <div>
-                    <h3>eten</h3>
-                    <p>
-                        wij koken het hele weekend: lokaal, seizoensgebonden
-                        en vegetarisch. winterse soepen, wortelgroenten uit de
-                        kelder, fermentatie, en heel veel thee.
-                    </p>
-                </div>
+                <h3>eten</h3>
+                <p>
+                    wij koken het hele weekend met wat de koude grond nu geeft:
+                    prei, pastinaak, witlof, boerenkool en paddenstoelen.
+                    biologisch, uit de buurt en vegetarisch, met winterse soepen,
+                    gefermenteerde groenten en heel veel thee.
+                </p>
             </li>
             <li>
-                <span class="nr">iii.</span>
-                <div>
-                    <h3>regeneratief denken</h3>
-                    <p>
-                        over bodem, biodiversiteit en gemeenschap. wat kunnen we
-                        leren van hoe de natuur zichzelf herstelt, en wat
-                        betekent dat voor hoe wij leven?
-                    </p>
-                </div>
+                <h3>regeneratief denken</h3>
+                <p>
+                    regeneratief betekent herstellend. in de landbouw gaat het
+                    over bodem, biodiversiteit en gemeenschap. wij kijken wat
+                    we daarvan kunnen leren voor onszelf: wat voedt jou,
+                    wat put je uit en wat heeft rust nodig?
+                </p>
             </li>
             <li>
-                <span class="nr">iv.</span>
-                <div>
-                    <h3>workshops</h3>
-                    <p>
-                        creatieve workshops waarin we met spel, verbeelding
-                        en onze handen dromen over hoe het ook anders kan,
-                        met elkaar en met de aarde.
-                    </p>
-                </div>
+                <h3>workshops</h3>
+                <p>
+                    we maken dingen met onze handen: knippen, plakken,
+                    tekenen en een beetje snijden. ondertussen denken we
+                    na over hoe het in jouw eigen leven kan herstellen en
+                    groeien. je hoeft niks te kunnen.
+                </p>
             </li>
         </ol>
     </section>
@@ -158,21 +341,22 @@
         <div class="smal">
             <p>
                 we slapen met z'n zestienen in gedeelde kamers. sommige kamers
-                hebben zes bedden met schotjes ertussen, andere drie bedden
-                waarvan één op een vide. alle plekken kosten hetzelfde
-                en wij maken de kamerindeling.
+                hebben zes bedden met schotjes ertussen, andere drie of vier bedden. er is één tweepersoonskamer met een
+                eigen badkamer, voor €750 per bed. alle andere plekken kosten €695.
+                wij maken de kamerindeling.
             </p>
             <p>
                 kom je met vriendinnen? boek dan samen in één keer, of laat
                 bij het boeken weten bij wie je graag op de kamer wil.
-                we doen ons best om daar rekening mee te houden.
+                we doen ons best om dat voor elkaar te krijgen.
             </p>
         </div>
 
         <div class="fotos">
-            <img src="/fotos/kamer1.png" alt="kamer met zes bedden">
-            <img src="/fotos/kamer2.png" alt="kamer met vide">
-            <img src="/fotos/kamer3.png" alt="">
+
+            <img src="/kamers/kamer2.jpg" alt="kamer met vide" style="--r: 1.5">
+            <img src="/kamers/kamer1.jpg" alt="" style="--r: 0.75">
+            <img src="/kamers/kamer3.jpg" alt="" style="--r: 1.333">
         </div>
     </section>
 
@@ -189,19 +373,25 @@
             </div>
             <div>
                 <dt>waar</dt>
-                <dd>[locatie, adres]<br>[hoe kom je er: trein, bus, carpoolen]</dd>
+                <dd>La Tertulia
+                    <br>
+                    Hantert 6
+                    5435 XB Sint Agatha (NB)
+                    Nederland
+                </dd>
             </div>
             <div>
                 <dt>prijs</dt>
-                <dd>€[bedrag] per persoon</dd>
+                <dd>€695 per persoon</dd>
             </div>
             <div>
                 <dt>inbegrepen</dt>
-                <dd>2 overnachtingen, alle maaltijden en drankjes, yoga, workshops en materialen</dd>
+                <dd>2 overnachtingen, alle maaltijden en drankjes, yogalessen, workshops en materialen, goodiebag en
+                    notitieboekje</dd>
             </div>
             <div>
                 <dt>meenemen</dt>
-                <dd>yogamat (als je die hebt), slaapzak of beddengoed, wollen sokken, warme trui, laarzen</dd>
+                <dd>yogakleding, pantoffels</dd>
             </div>
             <div>
                 <dt>eten</dt>
@@ -209,8 +399,8 @@
             </div>
             <div>
                 <dt>annuleren</dt>
-                <dd>[bijv. tot 4 weken van tevoren krijg je je geld terug, daarna kun je je plek aan iemand anders
-                    geven]</dd>
+                <dd>tot 4 weken van tevoren krijg je je geld terug van ons, daarna kun je je plek aan iemand anders
+                    geven</dd>
             </div>
         </dl>
     </section>
@@ -223,9 +413,20 @@
         <p class="plekken">op = op!</p>
 
         <div class="boekwidget">
-            <!-- plak hier de embed-code van Ticket Tailor (of een andere dienst).
-                 die laat zelf zien hoeveel plekken er nog zijn en wanneer het uitverkocht is. -->
-            <p>[hier komt het boekingssysteem]</p>
+            <!-- Ticket Tailor Widget. Paste this into your website where you want the widget to appear. Do not change the code or the widget may not work properly. -->
+            <div class="tt-widget">
+                <div class="tt-widget-fallback">
+                    <p><a href="https://www.tickettailor.com/all-tickets/deverrehoeve/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true"
+                            target="_blank">Click here to buy tickets</a><br /><small><a
+                                href="https://www.tickettailor.com?rf=wdg_349340" class="tt-widget-powered">Sell tickets
+                                online with Ticket Tailor</a></small></p>
+                </div>
+                <script src="https://cdn.tickettailor.com/js/widgets/min/widget.js"
+                    data-url="https://www.tickettailor.com/all-tickets/deverrehoeve/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true"
+                    data-type="inline" data-inline-minimal="true" data-inline-show-logo="false"
+                    data-inline-bg-fill="true" data-inline-inherit-ref-from-url-param=""
+                    data-inline-ref="website_widget"></script>
+            </div><!-- End of Ticket Tailor Widget -->
         </div>
 
         <p>vragen? <a href="mailto:reneesfarm.events@gmail.com">stuur ons een mailtje</a></p>
@@ -241,6 +442,23 @@
             <a href="/">meer over De Verre Hoeve</a>
         </p>
     </footer>
+
+    <script>
+        /* schakelaar tussen winter (donker) en lente (licht) */
+        (function () {
+            var knop = document.querySelector('.wissel');
+            var root = document.documentElement;
+            function zet(lente) {
+                if (lente) { root.dataset.thema = 'lente'; } else { delete root.dataset.thema; }
+                knop.setAttribute('aria-pressed', lente ? 'true' : 'false');
+                try { localStorage.setItem('retreat-thema', lente ? 'lente' : 'winter'); } catch (e) { }
+            }
+            knop.setAttribute('aria-pressed', root.dataset.thema === 'lente' ? 'true' : 'false');
+            knop.addEventListener('click', function () {
+                zet(root.dataset.thema !== 'lente');
+            });
+        })();
+    </script>
 
 </body>
 
