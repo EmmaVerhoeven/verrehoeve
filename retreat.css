@@ -110,8 +110,6 @@ h3 {
 }
 
 .label {
-  font-variant: small-caps;
-  letter-spacing: 0.12em;
   font-size: 0.95rem;
   color: var(--tekst-zacht);
 }
@@ -167,8 +165,6 @@ h3 {
   background: none;
   color: inherit;
   font: inherit;
-  font-variant: small-caps;
-  letter-spacing: 0.08em;
   cursor: pointer;
 }
 
@@ -249,7 +245,12 @@ h3 {
 
 .laag.lente {
   opacity: 0;
-  background: linear-gradient(to bottom, #7cbad3 0%, #c2dcde 40%, #a3cb76 100%);
+  background: linear-gradient(
+    to bottom,
+    #9abacb 0%,
+    rgb(184, 200, 207) 40%,
+    hsl(223, 21%, 84%) 100%
+  );
 }
 
 :root[data-thema="lente"] .laag.winter {
@@ -427,9 +428,21 @@ h3 {
 .sneeuw::before {
   top: -450px;
   background-image:
-    radial-gradient(3px 3px at 90px 45px, rgba(255, 255, 255, 0.9), transparent),
-    radial-gradient(3.4px 3.4px at 195px 285px, rgba(255, 255, 255, 0.85), transparent),
-    radial-gradient(2.8px 2.8px at 405px 405px, rgba(255, 255, 255, 0.85), transparent);
+    radial-gradient(
+      3px 3px at 90px 45px,
+      rgba(255, 255, 255, 0.9),
+      transparent
+    ),
+    radial-gradient(
+      3.4px 3.4px at 195px 285px,
+      rgba(255, 255, 255, 0.85),
+      transparent
+    ),
+    radial-gradient(
+      2.8px 2.8px at 405px 405px,
+      rgba(255, 255, 255, 0.85),
+      transparent
+    );
   background-size: 450px 450px;
   animation: omlaag 39s linear infinite;
 }
@@ -437,8 +450,16 @@ h3 {
 .sneeuw::after {
   top: -330px;
   background-image:
-    radial-gradient(1.8px 1.8px at 45px 120px, rgba(255, 255, 255, 0.6), transparent),
-    radial-gradient(1.6px 1.6px at 290px 195px, rgba(255, 255, 255, 0.5), transparent);
+    radial-gradient(
+      1.8px 1.8px at 45px 120px,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    ),
+    radial-gradient(
+      1.6px 1.6px at 290px 195px,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    );
   background-size: 330px 330px;
   animation: omlaag-ver 51s linear infinite;
 }
@@ -867,8 +888,6 @@ section > .label {
 }
 
 .praktisch dt {
-  font-variant: small-caps;
-  letter-spacing: 0.08em;
   color: var(--tekst-zacht);
 }
 
