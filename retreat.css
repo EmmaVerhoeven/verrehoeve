@@ -991,6 +991,17 @@ footer p {
   margin: 0 auto;
 }
 
+/* het logootje nog een keer onderaan, iets groter en altijd in het echte tomaatrood */
+footer .stempel {
+  width: 150px;
+  margin: 36px auto 0;
+  opacity: 1;
+}
+
+footer .stempel ellipse {
+  fill: tomato;
+}
+
 /* ---------- MOBIEL ---------- */
 
 @media (max-width: 760px) {
