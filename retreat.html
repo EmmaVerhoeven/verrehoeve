@@ -201,44 +201,38 @@
         </div>
 
         <div class="groenten">
-            <!-- PLACEHOLDERS: vervang elk plaatje door je eigen getekende png (transparante achtergrond),
-                 met dezelfde bestandsnaam in de map "groenten". dan hoef je hier niks te veranderen.
+            <!-- de getekende groenten staan in de map "retreat-veg".
 
-                 --s is de grootte: 1 is de standaardhoogte, 0.7 is kleiner, 1.2 is groter.
-                 de onderkant van elk plaatje staat in de grond, de bovenkant erboven.
+                 --s is de grootte: 1 is de standaardhoogte (de boerenkool), 0.7 is kleiner, 1.2 is groter.
+                 de verhoudingen volgen nu de pixelhoogte van de tekeningen, dus ze staan op dezelfde schaal.
+                 --g is hoeveel van het plaatje onder de grond zit, van onderaf gemeten:
+                 0.3 betekent dat de onderste 30% (de wortels) in de aarde staat. iets te hoog of te laag? schuif met --g.
                  meer groenten? kopieer een heel <figure> blok. andere volgorde? verplaats de blokken.
-                 de tekst in <figcaption> verschijnt boven de groente als je eroverheen beweegt. -->
+                 de tekst in <figcaption> verschijnt boven de groente als je eroverheen beweegt.
+
+                 de boom zit altijd vast aan de linkerrand, los van de rij. de winterboom en de lenteboom
+                 wisselen mee met de schakelaar. -->
+            <div class="boom" aria-hidden="true" style="--s:2.4; --g:.35">
+                <img class="b-winter" src="retreat-veg/boom-w.png" alt="">
+                <img class="b-lente" src="retreat-veg/boom-l.png" alt="">
+            </div>
             <figure class="groente" tabindex="0">
-                <img src="groenten/biet.png" alt="biet" style="--s:1.5">
+                <img src="retreat-veg/prei.png" alt="prei" style="--s:.99; --g:.28">
+                <figcaption>prei winterfeitje</figcaption>
+            </figure>
+            <figure class="groente" tabindex="0">
+                <img src="retreat-veg/biet.png" alt="biet" style="--s:.67; --g:.53">
                 <figcaption>biet winterfeitje
                 </figcaption>
             </figure>
             <figure class="groente" tabindex="0">
-                <img src="groenten/prei.png" alt="prei" style="--s:1.15">
-                <figcaption>prei winterfeitje</figcaption>
-            </figure>
-            <figure class="groente" tabindex="0">
-                <img src="groenten/boerenkool.png" alt="boerenkool" style="--s:.95">
+                <img src="retreat-veg/boerenkool.png" alt="boerenkool" style="--s:1; --g:.35">
                 <figcaption>boerenkool winterfeitje
                 </figcaption>
             </figure>
             <figure class="groente" tabindex="0">
-                <img src="groenten/pastinaak.png" alt="pastinaak" style="--s:1.1">
+                <img src="retreat-veg/pastinaak.png" alt="pastinaak" style="--s:1.13; --g:.65">
                 <figcaption>pastinaak winterfeitje
-                </figcaption>
-            </figure>
-            <figure class="groente" tabindex="0">
-                <img src="groenten/paddenstoel.png" alt="paddenstoel" style="--s:1">
-                <figcaption>paddenstoel winterfeitje
-                </figcaption>
-            </figure>
-            <figure class="groente" tabindex="0">
-                <img src="groenten/witlof.png" alt="witlof" style="--s:1.2">
-                <figcaption>witlof winterfeitje</figcaption>
-            </figure>
-            <figure class="groente" tabindex="0">
-                <img src="groenten/bloemkool.png" alt="bloemkool" style="--s:.4">
-                <figcaption>winterfeitje
                 </figcaption>
             </figure>
         </div>

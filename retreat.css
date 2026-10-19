@@ -270,7 +270,8 @@ h3 {
 
 /* twee lagen die in elkaar overlopen als je wisselt: per stand een lucht en een bodem */
 .hero {
-  --veg-h: clamp(120px, 16vw, 220px); /* hoogte van de getekende groenten */
+  --veg-h: clamp(140px, 20vw, 280px); /* hoogte van de getekende groenten (de boerenkool) */
+  --diep: calc(var(--veg-h) * 0.75); /* hoeveel ruimte er onder de grondlijn is voor de wortels */
   --zin-ruimte: 200px; /* hoeveel aarde er onder de groenten zit */
 }
 
@@ -304,13 +305,13 @@ h3 {
 }
 
 /* de bodem: een golvende, zachte rand en daaronder aarde die uitloopt naar de pagina.
-   de rand ligt ongeveer op 40% van de hoogte van de groenten, zodat hun onderkant in de grond staat */
+   de rand ligt precies op de grondlijn van de groenten, zodat hun wortels in de grond staan */
 .bodem {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: calc(var(--veg-h) * 0.4 + var(--zin-ruimte) + 110px);
+  height: calc(var(--diep) + var(--zin-ruimte) + 110px);
 }
 
 /* het licht aan de horizon, vlak boven de bodem */
@@ -650,7 +651,7 @@ h3 {
   flex-wrap: nowrap; /* altijd naast elkaar, nooit een rij lager */
   justify-content: center;
   align-items: flex-end;
-  gap: clamp(4px, 3vw, 40px);
+  gap: clamp(8px, 7vw, 110px); /* ruimte tussen de groenten: groter getal = verder uit elkaar */
   min-height: clamp(160px, 20vw, 260px);
   margin-top: 40px;
   padding: 0 16px;
@@ -675,6 +676,37 @@ h3 {
   max-width: none;
   object-fit: contain;
   object-position: 50% 100%;
+  /* schuif het plaatje omlaag tot het stuk onder de grond (--g) precies onder de grondlijn zit */
+  margin-bottom: calc(var(--diep) - var(--veg-h) * var(--s, 1) * var(--g, 0));
+}
+
+/* de boom: altijd vast aan de linkerrand, met de wortels op dezelfde grondlijn als de groenten */
+.boom {
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--diep) - var(--veg-h) * var(--s, 1) * var(--g, 0));
+  height: calc(var(--veg-h) * var(--s, 1));
+  aspect-ratio: 1506 / 1995;
+  pointer-events: none;
+}
+
+.boom img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-position: 0 100%;
+  transition: opacity 1s;
+}
+
+.boom .b-lente,
+:root[data-thema="lente"] .boom .b-winter {
+  opacity: 0;
+}
+
+:root[data-thema="lente"] .boom .b-lente {
+  opacity: 1;
 }
 
 /* een paar zinnetjes boven de groente, die verschijnen als je eroverheen beweegt (of erop tikt) */
@@ -702,23 +734,23 @@ h3 {
 }
 
 /* de buitenste groenten: tekst naar binnen uitlijnen, zodat hij niet van het scherm valt */
-.groente:first-child figcaption {
+.groente:first-of-type figcaption {
   left: 0;
   text-align: left;
   transform: translate(0, 6px);
 }
 
-.groente:last-child figcaption {
+.groente:last-of-type figcaption {
   left: auto;
   right: 0;
   text-align: right;
   transform: translate(0, 6px);
 }
 
-.groente:first-child:hover figcaption,
-.groente:first-child:focus figcaption,
-.groente:last-child:hover figcaption,
-.groente:last-child:focus figcaption {
+.groente:first-of-type:hover figcaption,
+.groente:first-of-type:focus figcaption,
+.groente:last-of-type:hover figcaption,
+.groente:last-of-type:focus figcaption {
   transform: translate(0, 0);
 }
 
@@ -1029,7 +1061,7 @@ footer .stempel ellipse {
   }
 
   .hero {
-    --veg-h: clamp(88px, 15vw, 130px);
+    --veg-h: clamp(110px, 20vw, 170px);
     --zin-ruimte: 150px;
   }
 
@@ -1066,7 +1098,7 @@ footer .stempel ellipse {
   }
 }
 
-/* ---------- HEEL SMAL: de buitenste groenten vallen weg ---------- */
+/* ---------- HEEL SMAL ---------- */
 
 @media (max-width: 560px) {
   /* het logootje wordt piepklein en het menu schuift ernaast, op dezelfde regel.
@@ -1097,33 +1129,7 @@ footer .stempel ellipse {
     font-size: 0.72rem;
   }
 
-  .groente:first-child,
-  .groente:last-child {
-    display: none;
-  }
-
-  /* nu staan de tweede en de voorlaatste aan de rand */
-  .groente:nth-child(2) figcaption {
-    left: 0;
-    text-align: left;
-    transform: translate(0, 6px);
-  }
-
-  .groente:nth-last-child(2) figcaption {
-    left: auto;
-    right: 0;
-    text-align: right;
-    transform: translate(0, 6px);
-  }
-
-  .groente:nth-child(2):hover figcaption,
-  .groente:nth-child(2):focus figcaption,
-  .groente:nth-last-child(2):hover figcaption,
-  .groente:nth-last-child(2):focus figcaption {
-    transform: translate(0, 0);
-  }
-
   .hero {
-    --veg-h: 108px;
+    --veg-h: 120px;
   }
 }
