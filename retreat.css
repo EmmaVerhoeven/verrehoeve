@@ -33,6 +33,7 @@
   --hero-tekst: #f3ecde;
   --hero-label: #c9bfae;
   --hero-zin: #b9ab9a;
+  --hero-feitje: #4f6c86; /* de feitjes die verschijnen bij de groenten en de boom */
   --knop-hover: #1b2233;
 
   --licht: #f6e2b5; /* de maan */
@@ -60,6 +61,7 @@
   --hero-tekst: #2a2420;
   --hero-label: #56616a;
   --hero-zin: #6f5f50;
+  --hero-feitje: #7295ac;
   --knop-hover: #f7f4ec;
 
   --licht: #f6d06b; /* de zon */
@@ -270,8 +272,14 @@ h3 {
 
 /* twee lagen die in elkaar overlopen als je wisselt: per stand een lucht en een bodem */
 .hero {
-  --veg-h: clamp(140px, 20vw, 280px); /* hoogte van de getekende groenten (de boerenkool) */
-  --diep: calc(var(--veg-h) * 0.75); /* hoeveel ruimte er onder de grondlijn is voor de wortels */
+  --veg-h: clamp(
+    140px,
+    20vw,
+    280px
+  ); /* hoogte van de getekende groenten (de boerenkool) */
+  --diep: calc(
+    var(--veg-h) * 0.75
+  ); /* hoeveel ruimte er onder de grondlijn is voor de wortels */
   --zin-ruimte: 200px; /* hoeveel aarde er onder de groenten zit */
 }
 
@@ -644,6 +652,16 @@ h3 {
 /* hier komen de getekende groenten (png met transparante achtergrond).
    elke groente heeft een eigen formaat via --s in de html: 1 is de standaardhoogte, 0.7 is kleiner */
 .groenten {
+  /* SPELEN MET DE AFSTANDEN: vw is een procent van de schermbreedte, dus 10vw = 10% van het scherm.
+     --tussen: de ruimte tussen de eerste twee groenten, en tussen de laatste twee
+     --midden: de lege plek in het midden, tussen de tweede en de derde groente
+     --boom-ruimte: extra ruimte links van de eerste groente, zodat die verder van de boom af staat.
+     de rij staat in het midden van het scherm: maak je --boom-ruimte groter en --midden
+     even veel kleiner, dan schuiven alleen de eerste twee groenten op en blijven de laatste twee staan */
+  --tussen: 5vw;
+  --midden: 35vw;
+  --boom-ruimte: 4vw;
+
   position: relative;
   z-index: 2;
   display: flex;
@@ -651,7 +669,7 @@ h3 {
   flex-wrap: nowrap; /* altijd naast elkaar, nooit een rij lager */
   justify-content: center;
   align-items: flex-end;
-  gap: clamp(8px, 7vw, 110px); /* ruimte tussen de groenten: groter getal = verder uit elkaar */
+  gap: var(--tussen);
   min-height: clamp(160px, 20vw, 260px);
   margin-top: 40px;
   padding: 0 16px;
@@ -660,12 +678,21 @@ h3 {
 /* als er te weinig breedte is, krimpen de plaatjes mee en blijven ze op de grondlijn staan */
 .groente {
   position: relative;
-  display: flex;
-  align-items: flex-end;
+  display: grid; /* zo liggen de winter- en de lenteversie precies op elkaar */
+  align-items: end;
   flex: 0 1 auto;
   min-width: 0;
   margin: 0;
   outline: none;
+}
+
+/* de derde groente krijgt de lege plek in het midden aan zijn linkerkant */
+.groente:nth-of-type(3) {
+  margin-left: var(--midden);
+}
+
+.groente:first-of-type {
+  margin-left: var(--boom-ruimte);
 }
 
 .groenten img {
@@ -678,6 +705,54 @@ h3 {
   object-position: 50% 100%;
   /* schuif het plaatje omlaag tot het stuk onder de grond (--g) precies onder de grondlijn zit */
   margin-bottom: calc(var(--diep) - var(--veg-h) * var(--s, 1) * var(--g, 0));
+  grid-area: 1 / 1;
+  transition: opacity 1s;
+}
+
+/* de winterversie en de lenteversie wisselen mee met de schakelaar (groenten en boom) */
+.groenten .v-lente,
+:root[data-thema="lente"] .groenten .v-winter {
+  opacity: 0;
+}
+
+:root[data-thema="lente"] .groenten .v-lente {
+  opacity: 1;
+}
+
+/* een groente met een class="v-hover" plaatje verandert daarin zolang je eroverheen beweegt
+   (in winter en lente). haal je de muis weg, dan wordt hij weer gewoon */
+/* met visibility in plaats van opacity: dan springt hij in één keer om, zonder dat je
+   de twee plaatjes even over elkaar ziet. de wissel winter/lente blijft wel zacht overvloeien */
+.groenten .v-hover {
+  visibility: hidden;
+  /* --hover-s: hoeveel groter het hover-plaatje is. 1 = even groot, 1.15 = 15% groter.
+     --hover-g: net als --g, maar dan voor het hover-plaatje: welk deel (van onderaf) onder de grond zit.
+     dat punt komt precies op de grondlijn, en vanuit daar groeit hij */
+  transform: translateY(calc((var(--hover-g, var(--g, 0)) - var(--g, 0)) * 100%)) scale(var(--hover-s, 1.15));
+  transform-origin: 50% calc((1 - var(--hover-g, var(--g, 0))) * 100%);
+}
+
+.groente:hover .v-hover {
+  visibility: visible;
+}
+
+/* het feitje schuift omhoog tot boven het (grotere) hover-plaatje, zodat het er niet doorheen loopt.
+   dit rekent uit hoeveel hoger de bovenkant van het hover-plaatje uitkomt dan die van de groente zelf */
+.groente:has(.v-hover) figcaption {
+  bottom: calc(
+    100% + 10px +
+      max(
+        0px,
+        var(--veg-h) * var(--s, 1) *
+          ((var(--hover-s, 1.15) - 1) * (1 - var(--hover-g, var(--g, 0))) -
+            (var(--hover-g, var(--g, 0)) - var(--g, 0)))
+      )
+  );
+}
+
+.groente:hover:has(.v-hover) .v-winter,
+.groente:hover:has(.v-hover) .v-lente {
+  visibility: hidden;
 }
 
 /* de boom: altijd vast aan de linkerrand, met de wortels op dezelfde grondlijn als de groenten */
@@ -687,7 +762,8 @@ h3 {
   bottom: calc(var(--diep) - var(--veg-h) * var(--s, 1) * var(--g, 0));
   height: calc(var(--veg-h) * var(--s, 1));
   aspect-ratio: 1506 / 1995;
-  pointer-events: none;
+  pointer-events: none; /* het plaatje is grotendeels leeg, dus alleen de stam reageert op de muis */
+  outline: none;
 }
 
 .boom img {
@@ -697,16 +773,51 @@ h3 {
   height: 100%;
   margin: 0;
   object-position: 0 100%;
-  transition: opacity 1s;
 }
 
-.boom .b-lente,
-:root[data-thema="lente"] .boom .b-winter {
+/* een onzichtbaar vlak over de stam: daar kun je overheen bewegen of op tikken */
+.boom::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 12%;
+  width: 18%;
+  bottom: calc(var(--g) * 100%);
+  pointer-events: auto;
+}
+
+/* bij hover komt de boom bovenop de groenten te liggen, zodat het tekstje niet achter de prei valt */
+.boom:hover,
+.boom:focus {
+  z-index: 3;
+}
+
+/* het tekstje hangt boven de boom, met een beetje ruimte tot de linkerrand */
+.boom-feitje {
+  position: absolute;
+  left: 16px;
+  bottom: calc(100% + 10px);
+  width: min(260px, 60vw);
+  margin: 0;
+  text-align: left;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--hero-feitje);
   opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition:
+    opacity 0.4s,
+    transform 0.4s,
+    color 0.8s;
 }
 
-:root[data-thema="lente"] .boom .b-lente {
+.boom:hover .boom-feitje,
+.boom:focus .boom-feitje {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* een paar zinnetjes boven de groente, die verschijnen als je eroverheen beweegt (of erop tikt) */
@@ -717,8 +828,9 @@ h3 {
   width: min(210px, 60vw);
   transform: translate(-50%, 6px);
   font-size: 1rem;
+  font-style: italic;
   line-height: 1.3;
-  color: var(--hero-tekst);
+  color: var(--hero-feitje);
   opacity: 0;
   pointer-events: none;
   transition:

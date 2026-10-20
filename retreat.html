@@ -210,31 +210,42 @@
                  meer groenten? kopieer een heel <figure> blok. andere volgorde? verplaats de blokken.
                  de tekst in <figcaption> verschijnt boven de groente als je eroverheen beweegt.
 
-                 de boom zit altijd vast aan de linkerrand, los van de rij. de winterboom en de lenteboom
-                 wisselen mee met de schakelaar. -->
-            <div class="boom" aria-hidden="true" style="--s:2.4; --g:.35">
-                <img class="b-winter" src="retreat-veg/boom-w.png" alt="">
-                <img class="b-lente" src="retreat-veg/boom-l.png" alt="">
+                 --s en --g staan op de <figure>, dus ze gelden voor de winter- én de lenteversie tegelijk.
+                 elke groente (en de boom) heeft twee plaatjes: class="v-winter" en class="v-lente".
+                 die wisselen mee met de schakelaar. de lenteversie moet even groot zijn als de winterversie.
+
+                 de boom zit altijd vast aan de linkerrand, los van de rij. -->
+            <!-- het tekstje bij de boom verschijnt als je over de stam beweegt -->
+            <div class="boom" tabindex="0" style="--s:2.5; --g:.32">
+                <img class="v-winter" src="retreat-veg/boom-w.png" alt="fruitboom">
+                <img class="v-lente" src="retreat-veg/boom-l.png" alt="">
+                <p class="boom-feitje">boom verhaaltje</p>
             </div>
-            <figure class="groente" tabindex="0">
-                <img src="retreat-veg/prei.png" alt="prei" style="--s:.99; --g:.28">
-                <figcaption>prei winterfeitje</figcaption>
+            <figure class="groente" tabindex="0" style="--s:0.9; --g:.20">
+                <img class="v-winter" src="retreat-veg/prei.png" alt="prei">
+                <img class="v-lente" src="retreat-veg/prei-l.png" alt="">
+                <figcaption>prei</figcaption>
             </figure>
-            <figure class="groente" tabindex="0">
-                <img src="retreat-veg/biet.png" alt="biet" style="--s:.67; --g:.53">
+            <figure class="groente" tabindex="0" style="--s:.65; --g:.22; --hover-s:1.5; --hover-g:.29">
+                <img class="v-winter" src="retreat-veg/biet.png" alt="biet">
+                <img class="v-lente" src="retreat-veg/biet-l.png" alt="">
+                <img class="v-hover" src="retreat-veg/biet-yoga.png" alt="">
                 <figcaption>biet winterfeitje
                 </figcaption>
             </figure>
-            <figure class="groente" tabindex="0">
-                <img src="retreat-veg/boerenkool.png" alt="boerenkool" style="--s:1; --g:.35">
-                <figcaption>boerenkool winterfeitje
-                </figcaption>
-            </figure>
-            <figure class="groente" tabindex="0">
-                <img src="retreat-veg/pastinaak.png" alt="pastinaak" style="--s:1.13; --g:.65">
+            <figure class="groente" tabindex="0" style="--s:.8; --g:.4">
+                <img class="v-winter" src="retreat-veg/pastinaak.png" alt="pastinaak">
+                <img class="v-lente" src="retreat-veg/pastinaak-l.png" alt="">
                 <figcaption>pastinaak winterfeitje
                 </figcaption>
             </figure>
+            <figure class="groente" tabindex="0" style="--s:0.9; --g:.20">
+                <img class="v-winter" src="retreat-veg/boerenkool.png" alt="boerenkool">
+                <img class="v-lente" src="retreat-veg/boerenkool-l.png" alt="">
+                <figcaption>boerenkool winterfeitje
+                </figcaption>
+            </figure>
+
         </div>
 
         <p class="grondzin"><i>de winter is minder kaal dan ze lijkt...<br> alle energie zit onder de grond!</i></p>
@@ -419,8 +430,20 @@
 
 
         <div class="boekwidget">
-           <!-- Ticket Tailor Widget. Paste this into your website where you want the widget to appear. Do not change the code or the widget may not work properly. -->
-<div class="tt-widget"><div class="tt-widget-fallback"><p><a href="https://www.tickettailor.com/all-tickets/deverrehoeve/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true" target="_blank">Click here to buy tickets</a><br /><small><a href="https://www.tickettailor.com?rf=wdg_349340" class="tt-widget-powered">Sell tickets online with Ticket Tailor</a></small></p></div><script src="https://cdn.tickettailor.com/js/widgets/min/widget.js" data-url="https://www.tickettailor.com/all-tickets/deverrehoeve/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true" data-type="inline" data-inline-minimal="true" data-inline-show-logo="false" data-inline-bg-fill="true" data-inline-inherit-ref-from-url-param="" data-inline-ref="website_widget"></script></div><!-- End of Ticket Tailor Widget -->
+            <!-- Ticket Tailor Widget. Paste this into your website where you want the widget to appear. Do not change the code or the widget may not work properly. -->
+            <div class="tt-widget">
+                <div class="tt-widget-fallback">
+                    <p><a href="https://www.tickettailor.com/all-tickets/deverrehoeve/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true"
+                            target="_blank">Click here to buy tickets</a><br /><small><a
+                                href="https://www.tickettailor.com?rf=wdg_349340" class="tt-widget-powered">Sell tickets
+                                online with Ticket Tailor</a></small></p>
+                </div>
+                <script src="https://cdn.tickettailor.com/js/widgets/min/widget.js"
+                    data-url="https://www.tickettailor.com/all-tickets/deverrehoeve/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true"
+                    data-type="inline" data-inline-minimal="true" data-inline-show-logo="false"
+                    data-inline-bg-fill="true" data-inline-inherit-ref-from-url-param=""
+                    data-inline-ref="website_widget"></script>
+            </div><!-- End of Ticket Tailor Widget -->
         </div>
 
         <p>vragen? <a href="mailto:reneesfarm.events@gmail.com">stuur ons een mailtje</a></p>
