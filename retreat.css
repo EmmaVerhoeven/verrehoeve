@@ -658,9 +658,9 @@ h3 {
      --boom-ruimte: extra ruimte links van de eerste groente, zodat die verder van de boom af staat.
      de rij staat in het midden van het scherm: maak je --boom-ruimte groter en --midden
      even veel kleiner, dan schuiven alleen de eerste twee groenten op en blijven de laatste twee staan */
-  --tussen: 5vw;
-  --midden: 35vw;
-  --boom-ruimte: 4vw;
+  --tussen: 10vw;
+  --midden: 40vw;
+  --boom-ruimte: 1vw;
 
   position: relative;
   z-index: 2;
@@ -728,7 +728,10 @@ h3 {
   /* --hover-s: hoeveel groter het hover-plaatje is. 1 = even groot, 1.15 = 15% groter.
      --hover-g: net als --g, maar dan voor het hover-plaatje: welk deel (van onderaf) onder de grond zit.
      dat punt komt precies op de grondlijn, en vanuit daar groeit hij */
-  transform: translateY(calc((var(--hover-g, var(--g, 0)) - var(--g, 0)) * 100%)) scale(var(--hover-s, 1.15));
+  transform: translateY(
+      calc((var(--hover-g, var(--g, 0)) - var(--g, 0)) * 100%)
+    )
+    scale(var(--hover-s, 1.15));
   transform-origin: 50% calc((1 - var(--hover-g, var(--g, 0))) * 100%);
 }
 
@@ -744,8 +747,10 @@ h3 {
       max(
         0px,
         var(--veg-h) * var(--s, 1) *
-          ((var(--hover-s, 1.15) - 1) * (1 - var(--hover-g, var(--g, 0))) -
-            (var(--hover-g, var(--g, 0)) - var(--g, 0)))
+          (
+            (var(--hover-s, 1.15) - 1) * (1 - var(--hover-g, var(--g, 0))) -
+              (var(--hover-g, var(--g, 0)) - var(--g, 0))
+          )
       )
   );
 }
