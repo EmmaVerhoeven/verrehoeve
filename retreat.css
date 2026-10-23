@@ -33,11 +33,13 @@
   --hero-tekst: #f3ecde;
   --hero-label: #c9bfae;
   --hero-zin: #b9ab9a;
-  --hero-feitje: #4f6c86; /* de feitjes die verschijnen bij de groenten en de boom */
   --knop-hover: #1b2233;
 
   --licht: #f6e2b5; /* de maan */
   --licht-glow: rgba(245, 235, 200, 0.28);
+
+  --klont: #43392b; /* de klont aarde achter het intro-tekstje */
+  --klont-tekst: #f0e8da;
 
   --widget-bg: #f7f4ec; /* het boekingsvak blijft licht, embeds zijn meestal wit */
   --widget-tekst: #2a2420;
@@ -61,8 +63,10 @@
   --hero-tekst: #2a2420;
   --hero-label: #56616a;
   --hero-zin: #6f5f50;
-  --hero-feitje: #7295ac;
   --knop-hover: #f7f4ec;
+
+  --klont: #8a775b;
+  --klont-tekst: #f7f4ec;
 
   --licht: #f6d06b; /* de zon */
   --licht-glow: rgba(246, 208, 107, 0.38);
@@ -272,15 +276,12 @@ h3 {
 
 /* twee lagen die in elkaar overlopen als je wisselt: per stand een lucht en een bodem */
 .hero {
-  --veg-h: clamp(
-    140px,
-    20vw,
-    280px
-  ); /* hoogte van de getekende groenten (de boerenkool) */
-  --diep: calc(
-    var(--veg-h) * 0.75
-  ); /* hoeveel ruimte er onder de grondlijn is voor de wortels */
-  --zin-ruimte: 200px; /* hoeveel aarde er onder de groenten zit */
+  /* hoeveel lucht er boven de maan zit. kleiner = kortere lucht, dus de horizon komt hoger */
+  --lucht-boven: 120px;
+  /* hoeveel lucht er tussen de knop en de horizon zit */
+  --lucht-onder: 100px;
+  /* hoe hoog de aarde onder de horizon is (de klont schuift daar nog een stuk in) */
+  --aarde: clamp(200px, 22vw, 300px);
 }
 
 .laag {
@@ -312,14 +313,13 @@ h3 {
   opacity: 1;
 }
 
-/* de bodem: een golvende, zachte rand en daaronder aarde die uitloopt naar de pagina.
-   de rand ligt precies op de grondlijn van de groenten, zodat hun wortels in de grond staan */
+/* de bodem: één zacht golvende, wazige rand en daaronder aarde die uitloopt naar de pagina */
 .bodem {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: calc(var(--diep) + var(--zin-ruimte) + 110px);
+  height: var(--aarde);
 }
 
 /* het licht aan de horizon, vlak boven de bodem */
@@ -373,11 +373,6 @@ h3 {
   fill: #40392c;
 }
 
-.winter .rand .achter {
-  fill: #40392c;
-  opacity: 0.55;
-}
-
 .lente .bodem::before {
   background: linear-gradient(to top, rgba(255, 236, 170, 0.65), transparent);
 }
@@ -394,11 +389,6 @@ h3 {
 
 .lente .rand .voor {
   fill: #6e5d45;
-}
-
-.lente .rand .achter {
-  fill: #6e5d45;
-  opacity: 0.55;
 }
 
 /* sterretjes en sneeuw (winter) en stuifmeel (lente), vervagen naar de aarde toe */
@@ -610,7 +600,7 @@ h3 {
   z-index: 2;
   width: 90px;
   height: 90px;
-  margin: 140px auto 36px;
+  margin: var(--lucht-boven) auto 36px;
   border-radius: 50%;
   background: var(--licht);
   box-shadow: 0 0 60px 18px var(--licht-glow);
@@ -649,239 +639,6 @@ h3 {
   margin: 0 auto 36px;
 }
 
-/* hier komen de getekende groenten (png met transparante achtergrond).
-   elke groente heeft een eigen formaat via --s in de html: 1 is de standaardhoogte, 0.7 is kleiner */
-.groenten {
-  /* SPELEN MET DE AFSTANDEN: vw is een procent van de schermbreedte, dus 10vw = 10% van het scherm.
-     --tussen: de ruimte tussen de eerste twee groenten, en tussen de laatste twee
-     --midden: de lege plek in het midden, tussen de tweede en de derde groente
-     --boom-ruimte: extra ruimte links van de eerste groente, zodat die verder van de boom af staat.
-     de rij staat in het midden van het scherm: maak je --boom-ruimte groter en --midden
-     even veel kleiner, dan schuiven alleen de eerste twee groenten op en blijven de laatste twee staan */
-  --tussen: 10vw;
-  --midden: 40vw;
-  --boom-ruimte: 1vw;
-
-  position: relative;
-  z-index: 2;
-  display: flex;
-  width: 100%; /* de rij is nooit breder dan het scherm, dus de plaatjes krimpen mee */
-  flex-wrap: nowrap; /* altijd naast elkaar, nooit een rij lager */
-  justify-content: center;
-  align-items: flex-end;
-  gap: var(--tussen);
-  min-height: clamp(160px, 20vw, 260px);
-  margin-top: 40px;
-  padding: 0 16px;
-}
-
-/* als er te weinig breedte is, krimpen de plaatjes mee en blijven ze op de grondlijn staan */
-.groente {
-  position: relative;
-  display: grid; /* zo liggen de winter- en de lenteversie precies op elkaar */
-  align-items: end;
-  flex: 0 1 auto;
-  min-width: 0;
-  margin: 0;
-  outline: none;
-}
-
-/* de derde groente krijgt de lege plek in het midden aan zijn linkerkant */
-.groente:nth-of-type(3) {
-  margin-left: var(--midden);
-}
-
-.groente:first-of-type {
-  margin-left: var(--boom-ruimte);
-}
-
-.groenten img {
-  flex: 0 1 auto;
-  min-width: 0;
-  height: calc(var(--veg-h) * var(--s, 1));
-  width: auto;
-  max-width: none;
-  object-fit: contain;
-  object-position: 50% 100%;
-  /* schuif het plaatje omlaag tot het stuk onder de grond (--g) precies onder de grondlijn zit */
-  margin-bottom: calc(var(--diep) - var(--veg-h) * var(--s, 1) * var(--g, 0));
-  grid-area: 1 / 1;
-  transition: opacity 1s;
-}
-
-/* de winterversie en de lenteversie wisselen mee met de schakelaar (groenten en boom) */
-.groenten .v-lente,
-:root[data-thema="lente"] .groenten .v-winter {
-  opacity: 0;
-}
-
-:root[data-thema="lente"] .groenten .v-lente {
-  opacity: 1;
-}
-
-/* een groente met een class="v-hover" plaatje verandert daarin zolang je eroverheen beweegt
-   (in winter en lente). haal je de muis weg, dan wordt hij weer gewoon */
-/* met visibility in plaats van opacity: dan springt hij in één keer om, zonder dat je
-   de twee plaatjes even over elkaar ziet. de wissel winter/lente blijft wel zacht overvloeien */
-.groenten .v-hover {
-  visibility: hidden;
-  /* --hover-s: hoeveel groter het hover-plaatje is. 1 = even groot, 1.15 = 15% groter.
-     --hover-g: net als --g, maar dan voor het hover-plaatje: welk deel (van onderaf) onder de grond zit.
-     dat punt komt precies op de grondlijn, en vanuit daar groeit hij */
-  transform: translateY(
-      calc((var(--hover-g, var(--g, 0)) - var(--g, 0)) * 100%)
-    )
-    scale(var(--hover-s, 1.15));
-  transform-origin: 50% calc((1 - var(--hover-g, var(--g, 0))) * 100%);
-}
-
-.groente:hover .v-hover {
-  visibility: visible;
-}
-
-/* het feitje schuift omhoog tot boven het (grotere) hover-plaatje, zodat het er niet doorheen loopt.
-   dit rekent uit hoeveel hoger de bovenkant van het hover-plaatje uitkomt dan die van de groente zelf */
-.groente:has(.v-hover) figcaption {
-  bottom: calc(
-    100% + 10px +
-      max(
-        0px,
-        var(--veg-h) * var(--s, 1) *
-          (
-            (var(--hover-s, 1.15) - 1) * (1 - var(--hover-g, var(--g, 0))) -
-              (var(--hover-g, var(--g, 0)) - var(--g, 0))
-          )
-      )
-  );
-}
-
-.groente:hover:has(.v-hover) .v-winter,
-.groente:hover:has(.v-hover) .v-lente {
-  visibility: hidden;
-}
-
-/* de boom: altijd vast aan de linkerrand, met de wortels op dezelfde grondlijn als de groenten */
-.boom {
-  position: absolute;
-  left: 0;
-  bottom: calc(var(--diep) - var(--veg-h) * var(--s, 1) * var(--g, 0));
-  height: calc(var(--veg-h) * var(--s, 1));
-  aspect-ratio: 1506 / 1995;
-  pointer-events: none; /* het plaatje is grotendeels leeg, dus alleen de stam reageert op de muis */
-  outline: none;
-}
-
-.boom img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  object-position: 0 100%;
-}
-
-/* een onzichtbaar vlak over de stam: daar kun je overheen bewegen of op tikken */
-.boom::before {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 12%;
-  width: 18%;
-  bottom: calc(var(--g) * 100%);
-  pointer-events: auto;
-}
-
-/* bij hover komt de boom bovenop de groenten te liggen, zodat het tekstje niet achter de prei valt */
-.boom:hover,
-.boom:focus {
-  z-index: 3;
-}
-
-/* het tekstje hangt boven de boom, met een beetje ruimte tot de linkerrand */
-.boom-feitje {
-  position: absolute;
-  left: 16px;
-  bottom: calc(100% + 10px);
-  width: min(260px, 60vw);
-  margin: 0;
-  text-align: left;
-  font-size: 1rem;
-  font-style: italic;
-  line-height: 1.3;
-  color: var(--hero-feitje);
-  opacity: 0;
-  transform: translateY(6px);
-  pointer-events: none;
-  transition:
-    opacity 0.4s,
-    transform 0.4s,
-    color 0.8s;
-}
-
-.boom:hover .boom-feitje,
-.boom:focus .boom-feitje {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* een paar zinnetjes boven de groente, die verschijnen als je eroverheen beweegt (of erop tikt) */
-.groente figcaption {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
-  width: min(210px, 60vw);
-  transform: translate(-50%, 6px);
-  font-size: 1rem;
-  font-style: italic;
-  line-height: 1.3;
-  color: var(--hero-feitje);
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity 0.4s,
-    transform 0.4s,
-    color 0.8s;
-}
-
-.groente:hover figcaption,
-.groente:focus figcaption {
-  opacity: 1;
-  transform: translate(-50%, 0);
-}
-
-/* de buitenste groenten: tekst naar binnen uitlijnen, zodat hij niet van het scherm valt */
-.groente:first-of-type figcaption {
-  left: 0;
-  text-align: left;
-  transform: translate(0, 6px);
-}
-
-.groente:last-of-type figcaption {
-  left: auto;
-  right: 0;
-  text-align: right;
-  transform: translate(0, 6px);
-}
-
-.groente:first-of-type:hover figcaption,
-.groente:first-of-type:focus figcaption,
-.groente:last-of-type:hover figcaption,
-.groente:last-of-type:focus figcaption {
-  transform: translate(0, 0);
-}
-
-.grondzin {
-  position: relative;
-  z-index: 2;
-  margin: 50px 24px 0;
-  padding-bottom: var(--zin-ruimte);
-  font-style: var(--schuin);
-  font-size: 0.9rem;
-  color: var(--hero-zin);
-  transition: color 0.8s;
-}
-
 /* ---------- KNOPPEN ---------- */
 
 .knop {
@@ -908,8 +665,9 @@ section {
   transition: background-color 0.8s;
 }
 
+/* onder de tekst: eerst nog wat lucht, dan de aarde */
 section.hero {
-  padding: 0;
+  padding: 0 0 calc(var(--lucht-onder) + var(--aarde));
 }
 
 section h2 {
@@ -926,9 +684,39 @@ section > .label {
 
 /* intro */
 
+/* het intro-tekstje staat direct onder de hero: weinig ruimte erboven, en de
+   gewone ruimte van een sectie eronder (dat is de padding-top van "wat gaan we doen") */
 .intro {
-  padding-top: 30px;
+  /* --klont-omhoog: hoe ver de klont omhoog schuift, de aarde in. groter = dichter tegen de horizon */
+  --klont-omhoog: 200px;
+  position: relative;
+  z-index: 1;
+  margin-top: calc(-1 * var(--klont-omhoog));
+  padding-top: 0;
   padding-bottom: 0;
+}
+
+/* het tekstje zit in een klont aarde: een uitgeknipte vorm (knip-klont) in een eigen bruin.
+   de vorm rekt mee met het tekstvak, dus de padding houdt de tekst binnen de randen.
+   wordt er tekst afgesneden? maak de padding dan groter */
+.intro .smal {
+  position: relative;
+  isolation: isolate;
+  max-width: 780px;
+  padding: 80px 110px;
+  color: var(--klont-tekst);
+  transition: color 0.8s;
+}
+
+.intro .smal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--spikkel-aarde), var(--klont);
+  clip-path: url(#knip-klont);
+  rotate: -1deg;
+  transition: background-color 0.8s;
 }
 
 .intro p {
@@ -980,6 +768,23 @@ section > .label {
   margin-top: 18px;
 }
 
+/* bij class="naast" komt de foto in een derde kolom, rechts naast de tekst.
+   het laatste getal is hoe breed de foto is */
+.onderdelen li.naast {
+  grid-template-columns: 200px 1fr 220px;
+}
+
+.onderdelen li.naast .plaatjes {
+  grid-column: 3;
+  grid-row: 1;
+  align-self: start;
+  margin-top: 0;
+}
+
+.onderdelen li.naast .plaatjes img {
+  flex-basis: 100%;
+}
+
 /* --r is de verhouding van de foto (breedte / hoogte): zo worden ze allemaal
    even hoog zonder dat er iets wordt afgesneden */
 .plaatjes img {
@@ -988,6 +793,121 @@ section > .label {
   height: auto;
   aspect-ratio: var(--r, 1);
   background: var(--bg-2);
+}
+
+/* staat er maar één foto in de rij, dan wordt hij niet over de hele breedte opgeblazen */
+.plaatjes img:only-child {
+  flex: 0 1 50%;
+}
+
+/* de foto's bij het eten en bij het slapen worden ook uitgeknipt, net als bij wie.
+   ze lopen de 8 knipvormen om de beurt langs, dus nieuwe foto's krijgen vanzelf een vorm.
+   brede foto's draaien maar een klein beetje, anders gaan ze scheef hangen */
+.plaatjes img,
+.fotos img {
+  clip-path: url(#knip-5);
+  rotate: -1deg;
+}
+
+.plaatjes img:nth-of-type(8n + 2),
+.fotos img:nth-of-type(8n + 2) {
+  clip-path: url(#knip-2);
+  rotate: 1.5deg;
+}
+
+.plaatjes img:nth-of-type(8n + 3),
+.fotos img:nth-of-type(8n + 3) {
+  clip-path: url(#knip-7);
+  rotate: -0.5deg;
+}
+
+.plaatjes img:nth-of-type(8n + 4),
+.fotos img:nth-of-type(8n + 4) {
+  clip-path: url(#knip-3);
+  rotate: 1deg;
+}
+
+.plaatjes img:nth-of-type(8n + 5),
+.fotos img:nth-of-type(8n + 5) {
+  clip-path: url(#knip-8);
+  rotate: -1.5deg;
+}
+
+.plaatjes img:nth-of-type(8n + 6),
+.fotos img:nth-of-type(8n + 6) {
+  clip-path: url(#knip-1);
+  rotate: 0.5deg;
+}
+
+.plaatjes img:nth-of-type(8n + 7),
+.fotos img:nth-of-type(8n + 7) {
+  clip-path: url(#knip-6);
+  rotate: -1deg;
+}
+
+.plaatjes img:nth-of-type(8n + 8),
+.fotos img:nth-of-type(8n + 8) {
+  clip-path: url(#knip-4);
+  rotate: 2deg;
+}
+
+/* wie */
+
+/* de foto's onder elkaar, met naast elke foto een tekstje */
+.wie-fotos {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+  margin: 50px auto 0;
+}
+
+.wie-fotos li {
+  display: grid;
+  grid-template-columns: 170px 1fr; /* eerste getal: hoe groot de foto is */
+  gap: 36px;
+  align-items: center;
+  padding: 24px 0;
+}
+
+/* een rondje dat net niet rond is, zoals met een schaar uitgeknipt.
+   de knipvormen staan als svg bovenaan de html (knip-1 t/m knip-8) */
+.wie-fotos img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--bg-2);
+  clip-path: url(#knip-1);
+}
+
+/* elke foto een eigen vorm en een klein beetje gedraaid */
+.wie-fotos li:nth-child(1) img {
+  rotate: -3deg;
+}
+
+.wie-fotos li:nth-child(2) img {
+  clip-path: url(#knip-2);
+  rotate: 4deg;
+}
+
+.wie-fotos li:nth-child(3) img {
+  clip-path: url(#knip-3);
+  rotate: -2deg;
+}
+
+.wie-fotos li:nth-child(4) img {
+  clip-path: url(#knip-4);
+  rotate: 3deg;
+}
+
+.wie-fotos h3 {
+  font-size: 1.6rem;
+  font-style: var(--schuin);
+  margin: 0 0 6px;
+}
+
+.wie-fotos p {
+  margin: 0;
+  color: var(--tekst-mid);
 }
 
 /* programma */
@@ -1034,6 +954,24 @@ section > .label {
   font-style: var(--schuin);
   color: var(--tekst-zacht);
   margin: 50px 0 0;
+}
+
+/* locatie */
+
+/* hoe breed de foto's samen zijn: kleiner getal = kleinere foto's */
+.locatie-fotos {
+  max-width: 760px;
+  margin: 50px auto 0;
+}
+
+/* het tekstje tussen de twee rijen foto's */
+.locatie-fotos .smal {
+  margin: 44px auto 30px;
+}
+
+.locatie-fotos .plaatjes {
+  gap: 14px;
+  margin-top: 14px;
 }
 
 /* slapen */
@@ -1178,16 +1116,15 @@ footer .stempel ellipse {
   }
 
   .hero {
-    --veg-h: clamp(110px, 20vw, 170px);
-    --zin-ruimte: 150px;
-  }
-
-  .groenten {
-    padding: 0 8px;
+    --lucht-onder: 70px;
   }
 
   section {
     padding: 70px 16px;
+  }
+
+  .intro .smal {
+    padding: 70px 44px;
   }
 
   .intro p {
@@ -1204,9 +1141,30 @@ footer .stempel ellipse {
     gap: 6px;
   }
 
+  /* op mobiel staat de foto toch weer onder de tekst */
+  .onderdelen li.naast {
+    grid-template-columns: 1fr;
+  }
+
+  .onderdelen li.naast .plaatjes {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 18px;
+  }
+
+  .onderdelen li.naast .plaatjes img {
+    flex-basis: 50%;
+  }
+
   .dagen {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  .wie-fotos li {
+    grid-template-columns: 110px 1fr;
+    gap: 20px;
+    align-items: start;
   }
 
   .praktisch div {
@@ -1237,16 +1195,12 @@ footer .stempel ellipse {
     justify-content: flex-start;
     gap: 8px;
     /* de letters groeien mee met het scherm, zodat de rij precies naast het logootje past */
-    font-size: clamp(0.8rem, calc((100vw - 140px) / 15.4), 1.1rem);
+    font-size: clamp(0.8rem, calc((100vw - 140px) / 19.5), 1.1rem);
   }
 
   /* de schakelaar staat op zijn eigen regel, rechts, met wat kleinere letters */
   .wissel {
     margin-left: auto;
     font-size: 0.72rem;
-  }
-
-  .hero {
-    --veg-h: 120px;
   }
 }
