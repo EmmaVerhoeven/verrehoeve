@@ -1159,8 +1159,19 @@ footer .stempel ellipse {
     margin-top: 18px;
   }
 
-  .onderdelen li.naast .plaatjes img {
-    flex-basis: 50%;
+  /* op mobiel staan de foto's onder elkaar, over de hele breedte */
+  .plaatjes,
+  .fotos {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .plaatjes img,
+  .plaatjes img:only-child,
+  .onderdelen li.naast .plaatjes img,
+  .fotos img {
+    flex: none;
+    width: 100%;
   }
 
   .dagen {
@@ -1183,26 +1194,25 @@ footer .stempel ellipse {
 /* ---------- HEEL SMAL ---------- */
 
 @media (max-width: 560px) {
-  /* het logootje wordt piepklein en het menu schuift ernaast, op dezelfde regel.
+  /* het logootje staat bovenaan, het menu eronder over de hele breedte.
      de schakelaar past daar niet meer bij en zakt een regel lager */
   .balk {
-    flex-wrap: nowrap;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 8px; /* even veel ruimte tussen logo en menu als tussen de woorden */
+    gap: 12px;
   }
 
   .stempel {
     flex: none;
-    width: 64px;
+    width: 80px;
   }
 
   .balk nav {
-    flex: 1;
-    min-width: 0;
+    width: 100%;
     justify-content: flex-start;
-    gap: 8px;
-    /* de letters groeien mee met het scherm, zodat de rij precies naast het logootje past */
-    font-size: clamp(0.8rem, calc((100vw - 140px) / 19.5), 1.1rem);
+    gap: 8px 10px;
+    /* de letters groeien mee met het scherm, zodat de rij precies op één regel past */
+    font-size: clamp(0.85rem, calc((100vw - 70px) / 19.5), 1.1rem);
   }
 
   /* de schakelaar staat op zijn eigen regel, rechts, met wat kleinere letters */
