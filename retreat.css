@@ -769,6 +769,11 @@ section > .label {
   margin-top: 18px;
 }
 
+/* bij wat gaan we doen staan de plaatjes alleen onder de tekst, niet over de hele lijn */
+.onderdelen li:not(.naast) .plaatjes {
+  grid-column: 2;
+}
+
 /* bij class="naast" komt de foto in een derde kolom, rechts naast de tekst.
    het laatste getal is hoe breed de foto is */
 .onderdelen li.naast {
@@ -1137,7 +1142,8 @@ footer .stempel ellipse {
     gap: 6px;
   }
 
-  .plaatjes {
+  .plaatjes,
+  .onderdelen li:not(.naast) .plaatjes {
     grid-column: 1;
     gap: 6px;
   }
