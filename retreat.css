@@ -1159,16 +1159,18 @@ footer .stempel ellipse {
     margin-top: 18px;
   }
 
-  /* op mobiel staan de foto's onder elkaar, over de hele breedte */
-  .plaatjes,
+  .onderdelen li.naast .plaatjes img {
+    flex-basis: 50%;
+  }
+
+  /* bij locatie en slapen staan de foto's op mobiel onder elkaar, over de hele breedte */
+  .locatie-fotos .plaatjes,
   .fotos {
     flex-direction: column;
     gap: 14px;
   }
 
-  .plaatjes img,
-  .plaatjes img:only-child,
-  .onderdelen li.naast .plaatjes img,
+  .locatie-fotos .plaatjes img,
   .fotos img {
     flex: none;
     width: 100%;
