@@ -1,47 +1,34 @@
-/* ============================================
-   De Verre Hoeve · winterretreat
-   eigen sfeer, wel familie van de hoofdsite:
-   Times New Roman, kleine letters, rustig
-
-   twee standen, met de schakelaar bovenin:
-   winter (donker, sterren, de maan)  en  lente (licht, stuifmeel, de zon)
-   ============================================ */
-
-/* ---------- KLEUREN ---------- */
-
-/* winter is de standaard */
 :root {
   color-scheme: dark;
 
-  --schuin: normal; /* koppen en zinnetjes: normal = recht, italic = weer schuin */
+  --schuin: normal;
 
-  --bg: #28241c; /* diepe grond, ook de achtergrond van de pagina */
-  --bg-2: #2f2a20; /* iets lichter vlak */
-  --bg-boek: #1d1a14; /* boeken-sectie */
+  --bg: #28241c;
+  --bg-2: #2f2a20;
+  --bg-boek: #1d1a14;
 
-  /* spikkels in de aarde: een klein tegeltje met donkere korreltjes, dat zich herhaalt */
   --spikkel-aarde: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' shape-rendering='crispEdges'%3E%3Cpath fill='%23000' fill-opacity='.3' d='M8 14h2v2h-2z M41 6h1v1h-1z M73 22h2v2h-2z M104 9h1v1h-1z M26 43h1v1h-1z M58 51h2v2h-2z M92 47h1v1h-1z M113 68h2v2h-2z M12 77h2v2h-2z M47 86h1v1h-1z M79 81h1v1h-1z M33 108h2v2h-2z M66 113h1v1h-1z M99 102h2v2h-2z M19 30h1v1h-1z M87 64h1v1h-1z'/%3E%3Cpath fill='%23000' fill-opacity='.3' d='M22 9h2v2h-2z M57 17h1v1h-1z M90 28h2v2h-2z M5 49h1v1h-1z M38 62h2v2h-2z M71 38h1v1h-1z M109 41h1v1h-1z M27 91h1v1h-1z M61 72h2v2h-2z M95 84h1v1h-1z M7 104h2v2h-2z M50 101h1v1h-1z M83 111h2v2h-2z M115 96h1v1h-1z M45 30h1v1h-1z M14 60h1v1h-1z'/%3E%3C/svg%3E");
-  --spikkel: var(--spikkel-aarde); /* in de winter is de hele pagina aarde */
+  --spikkel: var(--spikkel-aarde);
 
   --tekst: #f0e8da;
   --tekst-mid: #d3c8b8;
   --tekst-zacht: #b3a595;
   --lijn: #f6e2b5;
   --lijn-sterk: #f6e2b5;
-  --accent: #cf5b37; /* warm kaarslicht */
+  --accent: #cf5b37;
 
   --hero-tekst: #f3ecde;
   --hero-label: #c9bfae;
   --hero-zin: #b9ab9a;
   --knop-hover: #1b2233;
 
-  --licht: #f6e2b5; /* de maan */
+  --licht: #f6e2b5;
   --licht-glow: rgba(245, 235, 200, 0.28);
 
-  --klont: #43392b; /* de klont aarde achter het intro-tekstje */
+  --klont: #43392b;
   --klont-tekst: #f0e8da;
 
-  --widget-bg: #f7f4ec; /* het boekingsvak blijft licht, embeds zijn meestal wit */
+  --widget-bg: #f7f4ec;
   --widget-tekst: #2a2420;
 }
 
@@ -51,14 +38,14 @@
   --bg: #f7f4ec;
   --bg-2: #ebe4d3;
   --bg-boek: #3b3428;
-  --spikkel: none; /* in de lente alleen spikkels waar echt aarde is */
+  --spikkel: none;
 
   --tekst: #2a2420;
   --tekst-mid: #4a3f37;
   --tekst-zacht: #7a6c60;
   --lijn: #d9cfbd;
   --lijn-sterk: #8a6a52;
-  --accent: #ff3b0f; /* radijs, pompoen */
+  --accent: #ff3b0f;
 
   --hero-tekst: #2a2420;
   --hero-label: #56616a;
@@ -68,7 +55,7 @@
   --klont: #8a775b;
   --klont-tekst: #f7f4ec;
 
-  --licht: #f6d06b; /* de zon */
+  --licht: #f6d06b;
   --licht-glow: rgba(246, 208, 107, 0.38);
 }
 
@@ -120,8 +107,6 @@ h3 {
   color: var(--tekst-zacht);
 }
 
-/* ---------- BOVENBALK ---------- */
-
 .balk {
   position: absolute;
   top: 0;
@@ -148,7 +133,6 @@ h3 {
   text-decoration-color: var(--accent);
 }
 
-/* het logootje van de hoofdsite, klein als een stempel linksboven */
 .stempel {
   display: block;
   width: 112px;
@@ -166,8 +150,6 @@ h3 {
   height: auto;
 }
 
-/* in de winter een tintje dieper, zodat hij in de nachtlucht past.
-   in de lente, en als je eroverheen beweegt, het echte tomaatrood */
 .stempel ellipse {
   fill: #cf4326;
   transition: fill 0.3s;
@@ -193,13 +175,24 @@ h3 {
 }
 
 .balk nav {
+  flex: 1;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 22px;
   flex-wrap: wrap;
 }
 
-/* ---------- SCHAKELAAR: winter / lente ---------- */
+@media (min-width: 1100px) {
+  .balk {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .wissel {
+    justify-self: end;
+  }
+}
 
 .wissel {
   display: inline-flex;
@@ -210,7 +203,7 @@ h3 {
   background: none;
   color: inherit;
   font: inherit;
-  font-size: 0.8em; /* hoofdletters ogen groter, dus een maatje kleiner */
+  font-size: 0.8em;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
@@ -260,8 +253,6 @@ h3 {
   border-radius: 4px;
 }
 
-/* ---------- HERO: een lange gradient van nachtlucht naar bodem ---------- */
-
 .hero {
   position: relative;
   display: flex;
@@ -274,13 +265,9 @@ h3 {
   transition: color 0.8s;
 }
 
-/* twee lagen die in elkaar overlopen als je wisselt: per stand een lucht en een bodem */
 .hero {
-  /* hoeveel lucht er boven de maan zit. kleiner = kortere lucht, dus de horizon komt hoger */
   --lucht-boven: 120px;
-  /* hoeveel lucht er tussen de knop en de horizon zit */
   --lucht-onder: 100px;
-  /* hoe hoog de aarde onder de horizon is (de klont schuift daar nog een stuk in) */
   --aarde: clamp(200px, 22vw, 300px);
 }
 
@@ -313,7 +300,6 @@ h3 {
   opacity: 1;
 }
 
-/* de bodem: één zacht golvende, wazige rand en daaronder aarde die uitloopt naar de pagina */
 .bodem {
   position: absolute;
   left: 0;
@@ -322,7 +308,6 @@ h3 {
   height: var(--aarde);
 }
 
-/* het licht aan de horizon, vlak boven de bodem */
 .bodem::before {
   content: "";
   position: absolute;
@@ -338,7 +323,6 @@ h3 {
   inset: 0;
 }
 
-/* de spikkels liggen als een eigen laagje over de aarde */
 .bodem .vlak::after {
   content: "";
   position: absolute;
@@ -346,7 +330,6 @@ h3 {
   background: var(--spikkel-aarde);
 }
 
-/* in de lente loopt de aarde uit naar papier, dus de spikkels vervagen mee */
 .lente .bodem .vlak::after {
   -webkit-mask-image: linear-gradient(to bottom, #000 25%, transparent 70%);
   mask-image: linear-gradient(to bottom, #000 25%, transparent 70%);
@@ -391,7 +374,6 @@ h3 {
   fill: #6e5d45;
 }
 
-/* sterretjes en sneeuw (winter) en stuifmeel (lente), vervagen naar de aarde toe */
 .deeltjes {
   position: absolute;
   inset: 0;
@@ -415,14 +397,11 @@ h3 {
   transition: opacity 1s;
 }
 
-/* de sterren staan alleen bovenin de hemel en dunnen naar beneden toe uit */
 .sterren {
   -webkit-mask-image: linear-gradient(to bottom, #000 12%, transparent 38%);
   mask-image: linear-gradient(to bottom, #000 12%, transparent 38%);
 }
 
-/* elke ster is een eigen stipje met een eigen formaat, snelheid en moment:
-   sommige fonkelen snel, andere langzaam, een paar staan gewoon stil */
 .sterren i {
   position: absolute;
   width: var(--g);
@@ -449,8 +428,6 @@ h3 {
   }
 }
 
-/* sneeuw: zachte vlokjes die langzaam omlaag dwarrelen. twee laagjes, dichtbij
-   (groter, sneller) en ver weg (kleiner, trager), die samen licht heen en weer wiegen */
 .sneeuw {
   inset: 0 -20px;
   opacity: 0.55;
@@ -505,7 +482,6 @@ h3 {
   animation: omlaag-ver 51s linear infinite;
 }
 
-/* stuifmeel: zachte stipjes die langzaam omhoog zweven, de lente komt eraan */
 .stuifmeel {
   opacity: 0;
   inset: 0 0 -300px 0;
@@ -594,7 +570,6 @@ h3 {
   }
 }
 
-/* de maan, die in de lente een zon wordt */
 .licht {
   position: relative;
   z-index: 2;
@@ -628,7 +603,7 @@ h3 {
 
 .hero h1 {
   font-size: clamp(3rem, 9vw, 6.5rem);
-  font-style: italic; /* de titel blijft altijd schuin */
+  font-style: italic;
   line-height: 1;
   margin: 12px 0 18px;
 }
@@ -638,8 +613,6 @@ h3 {
   max-width: 450px;
   margin: 0 auto 36px;
 }
-
-/* ---------- KNOPPEN ---------- */
 
 .knop {
   display: inline-block;
@@ -658,14 +631,11 @@ h3 {
   color: var(--knop-hover);
 }
 
-/* ---------- SECTIES ---------- */
-
 section {
   padding: 110px 24px;
   transition: background-color 0.8s;
 }
 
-/* onder de tekst: eerst nog wat lucht, dan de aarde */
 section.hero {
   padding: 0 0 calc(var(--lucht-onder) + var(--aarde));
 }
@@ -682,12 +652,7 @@ section > .label {
   text-align: center;
 }
 
-/* intro */
-
-/* het intro-tekstje staat direct onder de hero: weinig ruimte erboven, en de
-   gewone ruimte van een sectie eronder (dat is de padding-top van "wat gaan we doen") */
 .intro {
-  /* --klont-omhoog: hoe ver de klont omhoog schuift, de aarde in. groter = dichter tegen de horizon */
   --klont-omhoog: 200px;
   position: relative;
   z-index: 1;
@@ -697,9 +662,6 @@ section > .label {
   opacity: 0.6;
 }
 
-/* het tekstje zit in een klont aarde: een uitgeknipte vorm (knip-klont) in een eigen bruin.
-   de vorm rekt mee met het tekstvak, dus de padding houdt de tekst binnen de randen.
-   wordt er tekst afgesneden? maak de padding dan groter */
 .intro .smal {
   position: relative;
   isolation: isolate;
@@ -727,8 +689,6 @@ section > .label {
   margin: 0;
 }
 
-/* wat gaan we doen */
-
 .onderdelen {
   list-style: none;
   padding: 0;
@@ -736,7 +696,6 @@ section > .label {
   max-width: 860px;
 }
 
-/* kop | tekst, met de plaatjes eronder over de hele breedte van de lijn */
 .onderdelen li {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -769,13 +728,10 @@ section > .label {
   margin-top: 18px;
 }
 
-/* bij wat gaan we doen staan de plaatjes alleen onder de tekst, niet over de hele lijn */
 .onderdelen li:not(.naast) .plaatjes {
   grid-column: 2;
 }
 
-/* bij class="naast" komt de foto in een derde kolom, rechts naast de tekst.
-   het laatste getal is hoe breed de foto is */
 .onderdelen li.naast {
   grid-template-columns: 200px 1fr 220px;
 }
@@ -791,8 +747,6 @@ section > .label {
   flex-basis: 100%;
 }
 
-/* --r is de verhouding van de foto (breedte / hoogte): zo worden ze allemaal
-   even hoog zonder dat er iets wordt afgesneden */
 .plaatjes img {
   flex: var(--r, 1) 1 0;
   min-width: 0;
@@ -801,14 +755,10 @@ section > .label {
   background: var(--bg-2);
 }
 
-/* staat er maar één foto in de rij, dan wordt hij niet over de hele breedte opgeblazen */
 .plaatjes img:only-child {
   flex: 0 1 50%;
 }
 
-/* de foto's bij het eten en bij het slapen worden ook uitgeknipt, net als bij wie.
-   ze lopen de 8 knipvormen om de beurt langs, dus nieuwe foto's krijgen vanzelf een vorm.
-   brede foto's draaien maar een klein beetje, anders gaan ze scheef hangen */
 .plaatjes img,
 .fotos img {
   clip-path: url(#knip-5);
@@ -857,9 +807,6 @@ section > .label {
   rotate: 2deg;
 }
 
-/* wie */
-
-/* de foto's onder elkaar, met naast elke foto een tekstje */
 .wie-fotos {
   list-style: none;
   padding: 0;
@@ -869,14 +816,12 @@ section > .label {
 
 .wie-fotos li {
   display: grid;
-  grid-template-columns: 170px 1fr; /* eerste getal: hoe groot de foto is */
+  grid-template-columns: 170px 1fr;
   gap: 36px;
   align-items: center;
   padding: 24px 0;
 }
 
-/* een rondje dat net niet rond is, zoals met een schaar uitgeknipt.
-   de knipvormen staan als svg bovenaan de html (knip-1 t/m knip-8) */
 .wie-fotos img {
   width: 100%;
   aspect-ratio: 1;
@@ -885,7 +830,6 @@ section > .label {
   clip-path: url(#knip-1);
 }
 
-/* elke foto een eigen vorm en een klein beetje gedraaid */
 .wie-fotos li:nth-child(1) img {
   rotate: -3deg;
 }
@@ -915,8 +859,6 @@ section > .label {
   margin: 0;
   color: var(--tekst-mid);
 }
-
-/* programma */
 
 #programma {
   background: var(--spikkel), var(--bg-2);
@@ -962,15 +904,11 @@ section > .label {
   margin: 50px 0 0;
 }
 
-/* locatie */
-
-/* hoe breed de foto's samen zijn: kleiner getal = kleinere foto's */
 .locatie-fotos {
   max-width: 760px;
   margin: 50px auto 0;
 }
 
-/* het tekstje tussen de twee rijen foto's */
 .locatie-fotos .smal {
   margin: 44px auto 30px;
 }
@@ -980,14 +918,10 @@ section > .label {
   margin-top: 14px;
 }
 
-/* slapen */
-
 #slapen p {
   margin: 0 0 1em;
 }
 
-/* de foto's zijn even breed en houden hun eigen verhouding: er wordt niets
-   afgesneden */
 .fotos {
   display: flex;
   align-items: flex-start;
@@ -1002,8 +936,6 @@ section > .label {
   height: auto;
   background: var(--bg-2);
 }
-
-/* praktisch */
 
 .praktisch {
   max-width: 700px;
@@ -1029,8 +961,6 @@ section > .label {
 .praktisch dd {
   margin: 0;
 }
-
-/* boeken: terug de grond in, in beide standen donker */
 
 #boeken {
   background: var(--spikkel-aarde), var(--bg-boek);
@@ -1066,8 +996,6 @@ section > .label {
   color: #7a6c60;
 }
 
-/* voet */
-
 footer {
   padding: 60px 24px 70px;
   text-align: center;
@@ -1084,7 +1012,6 @@ footer p {
   margin: 0 auto;
 }
 
-/* het logootje nog een keer onderaan, iets groter en altijd in het echte tomaatrood */
 footer .stempel {
   width: 150px;
   margin: 36px auto 0;
@@ -1094,8 +1021,6 @@ footer .stempel {
 footer .stempel ellipse {
   fill: tomato;
 }
-
-/* ---------- MOBIEL ---------- */
 
 @media (max-width: 760px) {
   body {
@@ -1148,7 +1073,6 @@ footer .stempel ellipse {
     gap: 6px;
   }
 
-  /* op mobiel staat de foto toch weer onder de tekst */
   .onderdelen li.naast {
     grid-template-columns: 1fr;
   }
@@ -1163,7 +1087,6 @@ footer .stempel ellipse {
     flex-basis: 50%;
   }
 
-  /* bij locatie en slapen staan de foto's op mobiel onder elkaar, over de hele breedte */
   .locatie-fotos .plaatjes,
   .fotos {
     flex-direction: column;
@@ -1193,15 +1116,12 @@ footer .stempel ellipse {
   }
 }
 
-/* ---------- HEEL SMAL ---------- */
-
 @media (max-width: 560px) {
-  /* het logootje staat bovenaan, het menu eronder over de hele breedte.
-     de schakelaar past daar niet meer bij en zakt een regel lager */
   .balk {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
   }
 
   .stempel {
@@ -1209,15 +1129,17 @@ footer .stempel ellipse {
     width: 80px;
   }
 
-  .balk nav {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 8px 10px;
-    /* de letters groeien mee met het scherm, zodat de rij precies op één regel past */
-    font-size: clamp(0.85rem, calc((100vw - 70px) / 19.5), 1.1rem);
+  .balk nav .niet-mobiel {
+    display: none;
   }
 
-  /* de schakelaar staat op zijn eigen regel, rechts, met wat kleinere letters */
+  .balk nav {
+    flex: 1 1 calc(100% - 94px);
+    justify-content: flex-end;
+    gap: 8px 12px;
+    font-size: clamp(0.85rem, calc((100vw - 170px) / 12.5), 1.1rem);
+  }
+
   .wissel {
     margin-left: auto;
     font-size: 0.72rem;

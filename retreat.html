@@ -7,7 +7,7 @@
     <title>winterretreat · de Verre Hoeve</title>
     <meta name="description"
         content="een winterweekend met yoga, regeneratief eten en creatieve workshops, met de zussen van De Verre Hoeve.">
-    <link rel="stylesheet" href="retreat.css?v=2">
+    <link rel="stylesheet" href="retreat.css?v=8">
     <script>
         try {
             if (localStorage.getItem('retreat-thema') === 'lente') {
@@ -18,8 +18,6 @@
 </head>
 
 <body>
-    <!-- de knipvormen voor alle foto's: zacht wonky rondjes, net als de klont (knip-1 t/m knip-8).
-         ze rekken mee met de foto, dus een brede foto wordt vanzelf een ovaal -->
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
         <defs>
             <clipPath id="knip-1" clipPathUnits="objectBoundingBox">
@@ -54,14 +52,12 @@
                 <path
                     d="M0.992,0.495 L0.991,0.513 L0.987,0.531 L0.986,0.550 L0.984,0.568 L0.980,0.586 L0.978,0.604 L0.976,0.623 L0.971,0.641 L0.969,0.660 L0.964,0.678 L0.962,0.698 L0.955,0.716 L0.946,0.733 L0.937,0.751 L0.929,0.769 L0.919,0.785 L0.907,0.801 L0.894,0.816 L0.883,0.833 L0.869,0.847 L0.857,0.863 L0.844,0.878 L0.828,0.892 L0.815,0.908 L0.798,0.919 L0.781,0.931 L0.764,0.943 L0.745,0.952 L0.726,0.960 L0.706,0.967 L0.687,0.975 L0.666,0.980 L0.647,0.986 L0.626,0.988 L0.606,0.993 L0.585,0.996 L0.564,0.996 L0.544,0.997 L0.523,0.997 L0.503,0.997 L0.482,0.998 L0.462,0.996 L0.441,0.995 L0.420,0.994 L0.399,0.994 L0.379,0.989 L0.358,0.988 L0.338,0.983 L0.318,0.976 L0.299,0.967 L0.279,0.961 L0.262,0.949 L0.244,0.938 L0.227,0.927 L0.209,0.917 L0.192,0.905 L0.176,0.893 L0.160,0.880 L0.145,0.866 L0.130,0.853 L0.114,0.839 L0.102,0.823 L0.089,0.808 L0.080,0.790 L0.069,0.773 L0.061,0.755 L0.055,0.735 L0.048,0.717 L0.041,0.699 L0.034,0.681 L0.030,0.662 L0.026,0.643 L0.021,0.625 L0.017,0.607 L0.014,0.588 L0.011,0.569 L0.010,0.551 L0.009,0.532 L0.007,0.513 L0.006,0.495 L0.005,0.476 L0.005,0.457 L0.004,0.438 L0.002,0.418 L0.005,0.399 L0.009,0.381 L0.012,0.362 L0.015,0.342 L0.021,0.324 L0.028,0.306 L0.034,0.287 L0.040,0.268 L0.050,0.251 L0.055,0.231 L0.066,0.214 L0.075,0.196 L0.085,0.178 L0.097,0.161 L0.110,0.146 L0.124,0.131 L0.139,0.117 L0.157,0.106 L0.175,0.095 L0.193,0.084 L0.211,0.075 L0.229,0.065 L0.248,0.057 L0.266,0.048 L0.286,0.042 L0.304,0.035 L0.324,0.030 L0.343,0.023 L0.363,0.019 L0.383,0.016 L0.403,0.012 L0.423,0.010 L0.443,0.009 L0.463,0.008 L0.483,0.004 L0.503,0.005 L0.523,0.004 L0.543,0.003 L0.563,0.006 L0.583,0.005 L0.603,0.008 L0.624,0.009 L0.644,0.014 L0.664,0.017 L0.684,0.021 L0.705,0.025 L0.726,0.029 L0.746,0.035 L0.767,0.041 L0.786,0.050 L0.805,0.060 L0.824,0.069 L0.841,0.082 L0.857,0.096 L0.874,0.109 L0.887,0.125 L0.900,0.141 L0.914,0.157 L0.924,0.175 L0.936,0.192 L0.947,0.209 L0.956,0.228 L0.965,0.246 L0.974,0.264 L0.980,0.283 L0.984,0.303 L0.988,0.322 L0.993,0.341 L0.993,0.362 L0.995,0.381 L0.995,0.400 L0.997,0.419 L0.998,0.438 L0.996,0.457 L0.992,0.476 Z" />
             </clipPath>
-            <!-- een rondere vorm voor de klont aarde achter het intro-tekstje -->
             <clipPath id="knip-klont" clipPathUnits="objectBoundingBox">
                 <path
                     d="M0.996,0.509 L0.998,0.528 L0.997,0.546 L0.996,0.565 L0.996,0.583 L0.996,0.602 L0.993,0.621 L0.993,0.640 L0.990,0.659 L0.989,0.679 L0.982,0.697 L0.980,0.717 L0.972,0.735 L0.967,0.755 L0.958,0.773 L0.950,0.792 L0.941,0.811 L0.928,0.827 L0.916,0.843 L0.905,0.861 L0.890,0.875 L0.873,0.888 L0.858,0.903 L0.841,0.915 L0.822,0.924 L0.804,0.935 L0.785,0.944 L0.767,0.954 L0.748,0.964 L0.729,0.971 L0.710,0.979 L0.689,0.983 L0.669,0.989 L0.649,0.994 L0.627,0.995 L0.607,0.997 L0.586,0.998 L0.565,0.997 L0.545,0.996 L0.525,0.995 L0.505,0.996 L0.485,0.996 L0.464,0.996 L0.444,0.994 L0.424,0.993 L0.404,0.991 L0.383,0.990 L0.363,0.987 L0.343,0.981 L0.323,0.977 L0.303,0.972 L0.283,0.966 L0.263,0.960 L0.244,0.952 L0.226,0.942 L0.206,0.934 L0.189,0.922 L0.171,0.911 L0.156,0.898 L0.139,0.885 L0.125,0.870 L0.109,0.856 L0.097,0.840 L0.083,0.825 L0.071,0.808 L0.058,0.793 L0.049,0.774 L0.039,0.757 L0.030,0.739 L0.022,0.721 L0.018,0.701 L0.013,0.682 L0.010,0.662 L0.008,0.642 L0.006,0.623 L0.004,0.604 L0.005,0.584 L0.003,0.566 L0.005,0.547 L0.003,0.528 L0.004,0.509 L0.005,0.491 L0.004,0.472 L0.005,0.453 L0.010,0.435 L0.012,0.416 L0.014,0.397 L0.020,0.379 L0.025,0.361 L0.031,0.343 L0.037,0.325 L0.042,0.306 L0.048,0.288 L0.056,0.270 L0.066,0.254 L0.077,0.238 L0.087,0.221 L0.097,0.204 L0.109,0.188 L0.121,0.172 L0.135,0.158 L0.148,0.142 L0.162,0.128 L0.177,0.114 L0.193,0.102 L0.208,0.088 L0.226,0.077 L0.245,0.069 L0.264,0.060 L0.282,0.051 L0.303,0.046 L0.322,0.038 L0.342,0.033 L0.362,0.027 L0.382,0.022 L0.402,0.019 L0.422,0.014 L0.443,0.011 L0.463,0.007 L0.484,0.005 L0.505,0.005 L0.526,0.003 L0.547,0.004 L0.567,0.006 L0.588,0.007 L0.609,0.009 L0.630,0.013 L0.651,0.017 L0.672,0.021 L0.692,0.026 L0.712,0.033 L0.731,0.042 L0.751,0.050 L0.770,0.058 L0.789,0.069 L0.806,0.081 L0.823,0.093 L0.840,0.106 L0.856,0.118 L0.871,0.133 L0.884,0.149 L0.899,0.163 L0.911,0.179 L0.922,0.197 L0.932,0.214 L0.940,0.233 L0.947,0.252 L0.954,0.270 L0.959,0.289 L0.964,0.308 L0.970,0.326 L0.975,0.344 L0.982,0.362 L0.986,0.380 L0.989,0.399 L0.992,0.417 L0.993,0.436 L0.996,0.454 L0.997,0.472 L0.997,0.491 Z" />
             </clipPath>
         </defs>
     </svg>
-
 
     <header class="balk">
         <a href="/" class="thuis stempel" aria-label="de Verre Hoeve, naar de hoofdsite">
@@ -83,20 +79,19 @@
         <nav>
             <a href="#wat">wat</a>
 
-            <a href="#programma">programma</a>
+            <a href="#programma" class="niet-mobiel">programma</a>
             <a href="#locatie">locatie</a>
-            <a href="#slapen">slapen</a>
-            <a href="#praktisch">praktisch</a>
+            <a href="#slapen" class="niet-mobiel">slapen</a>
+            <a href="#praktisch">info</a>
             <a href="#boeken">boeken</a>
             <a href="#wie">over ons</a>
-            <button class="wissel" type="button" aria-pressed="false" aria-label="wissel tussen winter en lente">
-                <span class="w-winter">winter</span>
-                <span class="schakelaar"><span class="knop-rond"></span></span>
-                <span class="w-lente">bijna lente</span>
-            </button>
         </nav>
+        <button class="wissel" type="button" aria-pressed="false" aria-label="wissel tussen winter en lente">
+            <span class="w-winter">winter</span>
+            <span class="schakelaar"><span class="knop-rond"></span></span>
+            <span class="w-lente">bijna lente</span>
+        </button>
     </header>
-
 
     <section class="hero">
         <div class="laag winter" aria-hidden="true">
@@ -108,7 +103,7 @@
                         </filter>
                     </defs>
                     <path class="voor" filter="url(#zacht-w)"
-                        d="M0,40 C240,34 480,46 720,40 C960,34 1200,46 1440,40 L1440,62 L0,62 Z" />
+                        d="M0,40 C240,26 480,54 720,40 C960,26 1200,54 1440,40 L1440,62 L0,62 Z" />
                 </svg>
                 <div class="vlak"></div>
             </div>
@@ -122,7 +117,7 @@
                         </filter>
                     </defs>
                     <path class="voor" filter="url(#zacht-l)"
-                        d="M0,40 C240,34 480,46 720,40 C960,34 1200,46 1440,40 L1440,62 L0,62 Z" />
+                        d="M0,40 C240,26 480,54 720,40 C960,26 1200,54 1440,40 L1440,62 L0,62 Z" />
                 </svg>
                 <div class="vlak"></div>
             </div>
@@ -241,8 +236,6 @@
         </div>
     </section>
 
-
-    <!-- INTRO -->
     <section class="intro">
         <div class="smal">
             <p><i><br>
@@ -261,14 +254,11 @@
         </div>
     </section>
 
-
-    <!-- WAT GAAN WE DOEN -->
     <section id="wat">
         <span class="label">het weekend</span>
         <h2>wat gaan we doen?</h2>
 
         <ol class="onderdelen">
-            <!-- class="naast": de foto staat rechts naast het tekstje in plaats van eronder -->
             <li class="naast">
                 <h3>yoga</h3>
                 <p>
@@ -309,18 +299,11 @@
                     <img src="/kamers/workshop2.jpg" alt="" style="--r: 1.4">
                     <img src="/kamers/workshop.png" alt="" style="--r: 1">
 
-
-
                 </div>
             </li>
         </ol>
     </section>
 
-
-
-
-
-    <!-- PROGRAMMA -->
     <section id="programma">
         <span class="label">voorlopig</span>
         <h2>programma</h2>
@@ -365,8 +348,6 @@
         </p>
     </section>
 
-
-    <!-- LOCATIE -->
     <section id="locatie">
         <span class="label">waar we verblijven</span>
         <h2>locatie</h2>
@@ -379,7 +360,6 @@
                 ruimte, en voelt toch nog als een boerderij. </p>
         </div>
 
-        <!-- twee rijen foto's die even hoog zijn. --r is de verhouding van de foto (breedte / hoogte) -->
         <div class="locatie-fotos">
             <div class="plaatjes">
                 <img src="/kamers/boerderij2.jpg" alt="de boerderij" style="--r: 2.31">
@@ -400,8 +380,6 @@
         </div>
     </section>
 
-
-    <!-- SLAPEN -->
     <section id="slapen">
         <span class="label">overnachten</span>
         <h2>slapen</h2>
@@ -427,8 +405,6 @@
         </div>
     </section>
 
-
-    <!-- PRAKTISCH -->
     <section id="praktisch">
         <span class="label">goed om te weten</span>
         <h2>praktisch</h2>
@@ -475,16 +451,9 @@
         </dl>
     </section>
 
-
-
-
-
-
-    <!-- BOEKEN -->
     <section id="boeken">
         <span class="label">16 plekken</span>
         <h2>boek je plek</h2>
-
 
         <div class="boekwidget">
             <!-- Ticket Tailor Widget. Paste this into your website where you want the widget to appear. Do not change the code or the widget may not work properly. -->
@@ -506,8 +475,6 @@
         <p>vragen? <a href="mailto:reneesfarm.events@gmail.com">stuur ons een mailtje</a></p>
     </section>
 
-
-    <!-- WIE -->
     <section id="wie">
         <span class="label">over ons</span>
         <h2>over ons</h2>
@@ -525,7 +492,6 @@
                 er nog veel meer zullen volgen, voor elk seizoen!
         </div>
 
-        <!-- zet de foto's in de map /wie/ (of pas het pad aan). ze worden vanzelf rond afgesneden -->
         <ul class="wie-fotos">
             <li>
                 <img src="/wie/hedwig.jpg" alt="Hedwig">
@@ -575,11 +541,9 @@
                 </div>
             </li>
 
-
         </ul>
     </section>
 
-    <!-- VOET -->
     <footer>
         <img src="/renisabemma.gif" alt="Renée, Isabelle en Emma">
         <p>
@@ -605,7 +569,6 @@
     </footer>
 
     <script>
-        /* schakelaar tussen winter (donker) en lente (licht) */
         (function () {
             var knop = document.querySelector('.wissel');
             var root = document.documentElement;
