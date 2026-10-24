@@ -694,6 +694,7 @@ section > .label {
   margin-top: calc(-1 * var(--klont-omhoog));
   padding-top: 0;
   padding-bottom: 0;
+  opacity: 0.6;
 }
 
 /* het tekstje zit in een klont aarde: een uitgeknipte vorm (knip-klont) in een eigen bruin.
